@@ -1,0 +1,23 @@
+<HOST>
+    <item>
+        <name>DEV (36)</name>
+        <value>http://10.68.198.36:13081/sc62server/ws</value>
+    </item>
+    <item>
+        <name>DEV (37)</name>
+        <value>http://sbt-ipo-006.delta.sbrf.ru:13082/sc62server/PWS/SBAPI_Incident.wsdl</value>
+<!--        <value>http://10.68.198.37:13081/sc62server/ws</value>-->
+    </item>
+    <item>
+        <name>IFT</name>
+        <value>http://sbt-oaar-332.delta.sbrf.ru:13081/sc62server/ws</value>
+    </item>
+    <item>
+        <name>UAT</name>
+        <value>http://tv-sm-12r2-017.ca.sbrf.ru:13082/ws</value>
+    </item>
+    <item>
+        <name>PROD</name>
+        <value></value>
+    </item>
+</HOST>
