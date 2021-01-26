@@ -3,6 +3,7 @@ package soapclient.form.main;
 import soapclient.host.HostList;
 import soapclient.parser.SchemeField;
 import soapclient.parser.SchemeParser;
+import soapclient.project.SaveProject;
 import soapclient.soap.Auth;
 import soapclient.soap.SOAPRequest;
 import soapclient.soap.SoapApacheHttpClient;
@@ -11,6 +12,7 @@ import soapclient.syntac.xml.XmlTextPane;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.html.HTMLEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -35,7 +37,8 @@ public class MainForm extends JFrame {
     private String method;
     private HostList hostList;
     private JMenu status;
-    private JTextArea textArea;
+    private SaveProject saveProject;
+
     public MainForm() {
         super("SOAP Client");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -109,12 +112,18 @@ public class MainForm extends JFrame {
         itemSendMessage.setName("send");
         //закртываем доступность до генерирования сообщения
 //        itemSendMessage.setEnabled(false);
+        JMenuItem itemSaveRequest = new JMenuItem("Сохранить запрос");
+        itemSaveRequest.setName("save_request");
+        //закртываем доступность до генерирования сообщения
+//        itemSaveRequest.setEnabled(false);
         itemAuth.addActionListener(new MainFormAction(itemAuth));
         itemGenerateMessage.addActionListener(new MainFormAction(itemGenerateMessage));
         itemSendMessage.addActionListener(new MainFormAction(itemSendMessage));
+        itemSaveRequest.addActionListener(new MainFormAction(itemSaveRequest));
         myMenu.add(itemAuth);
         myMenu.add(itemGenerateMessage);
         myMenu.add(itemSendMessage);
+        myMenu.add(itemSaveRequest);
         //возвращаем
         return myMenu;
     }
@@ -283,6 +292,41 @@ public class MainForm extends JFrame {
             System.out.println("Login canceled");
         }
     }
+    private void saveRequest() {
+
+        try {
+
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("*.xml","*.xml");
+            fileChooser.setFileFilter(filter);
+
+            if ( fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION ) {
+
+                File saveFile = fileChooser.getSelectedFile();
+                if (this.parser != null) {
+                    if (this.parser.getFields().size() > 0) {
+
+                        this.saveProject = new SaveProject(this.parser.getFields(),this.parser.getActions(),saveFile.getPath()+".xml");
+                        if (this.saveProject.run()) {
+                            JOptionPane.showMessageDialog(null, "Запрос сохранен");
+                        }
+                        else
+                            throw new Exception("Ошибка при сохранении запроса");
+                    }
+                    else
+                        throw new Exception("Ошибка при сохранении. Не удалось найти поля запроса");
+                }
+                else
+                    throw new Exception("Ошибка при сохранении запроса. Скорее всего вы не указали схему WSDL, по которой строится и сохраняется запрос");
+            }
+        }
+        catch(Exception ex) {
+
+            if (!ex.getMessage().equals("")) {
+
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
     private void showURLDialog() {
 
         JTextField schemeURL = new JTextField();
@@ -310,7 +354,7 @@ public class MainForm extends JFrame {
             }
 
         } else {
-            System.out.println("Login canceled");
+            System.out.println("Scheme address canceled");
         }
     }
     private void showFileChooser() {
@@ -400,6 +444,9 @@ public class MainForm extends JFrame {
                         break;
                     case "send":
                         sendRequest();
+                        break;
+                    case "save_request":
+                        saveRequest();
                         break;
                 }
             }

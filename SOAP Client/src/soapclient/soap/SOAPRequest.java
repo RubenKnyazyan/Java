@@ -64,7 +64,7 @@ public class SOAPRequest {
         String result = "\t\t\t\t<pws:keys query=\" \" updatecounter=\" \">\n";
         for (int index=0; index < fieldList.size(); index++) {
 
-            String value = getFieldValue(fieldList.get(index));
+            String value = fieldList.get(index).getFieldValue();
             if (fieldList.get(index).isKey()) {
                 result+="\t\t\t\t\t<pws:"+fieldList.get(index).getName()+" type=\""+fieldList.get(index).getType().replace("Type","")+"\" mandatory=\" \" readonly=\" \">"+value+"</pws:"+fieldList.get(index).getName()+">\n";
             }
@@ -81,7 +81,7 @@ public class SOAPRequest {
 
                 SchemeField field = fieldList.get(index);
                 if ( ! field.isKey()) {
-                    String value = getFieldValue(field);
+                    String value = field.getFieldValue();
                     if (!value.equals("") && value != null) {
 
                         if (field.getTable() != null && !field.getTable().equals("")) {
@@ -143,7 +143,7 @@ public class SOAPRequest {
                 }
                 else {
 
-                    String value = getFieldValue(fieldList.get(index));
+                    String value = fieldList.get(index).getFieldValue();
                     this.body += this.createFieldTAG(fieldList.get(index), value,6);
                 }
             }
@@ -170,28 +170,5 @@ public class SOAPRequest {
     private   String getFooter() {
 
         return  "</soapenv:Envelope>";
-    }
-    private String getFieldValue (SchemeField field) {
-
-        String value = "";
-        switch (field.getType()) {
-
-            case "BooleanType":
-                JCheckBox inputCheckBox = (JCheckBox) field.getInputField();
-                value = String.valueOf(inputCheckBox.isSelected());
-                break;
-            case "DurationType":
-            case "DateTimeType":
-                JSpinner inputDate = (JSpinner) field.getInputField();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-                value = simpleDateFormat.format(inputDate.getValue());
-                break;
-            case "DecimalType":
-            case "StringType":
-                JTextField inputText = (JTextField) field.getInputField();
-                value = inputText.getText();
-                break;
-        }
-        return value;
     }
 }

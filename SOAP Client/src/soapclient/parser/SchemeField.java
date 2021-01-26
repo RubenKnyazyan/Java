@@ -1,6 +1,7 @@
 package soapclient.parser;
 
 import javax.swing.*;
+import java.text.SimpleDateFormat;
 
 public class SchemeField {
 
@@ -78,5 +79,33 @@ public class SchemeField {
 
     public void setKey(boolean key) {
         isKey = key;
+    }
+
+    public String getFieldValue () {
+
+        String value = "";
+        switch (this.getType()) {
+
+            case "BooleanType":
+                JCheckBox inputCheckBox = (JCheckBox) this.getInputField();
+                value = String.valueOf(inputCheckBox.isSelected());
+                break;
+            case "DurationType":
+                JSpinner inputDateDuration = (JSpinner) this.getInputField();
+                SimpleDateFormat simpleDateFormatDuration = new SimpleDateFormat("HH:mm:ss");
+                value = simpleDateFormatDuration.format(inputDateDuration.getValue());
+                break;
+            case "DateTimeType":
+                JSpinner inputDate = (JSpinner) this.getInputField();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                value = simpleDateFormat.format(inputDate.getValue());
+                break;
+            case "DecimalType":
+            case "StringType":
+                JTextField inputText = (JTextField) this.getInputField();
+                value = inputText.getText();
+                break;
+        }
+        return value;
     }
 }

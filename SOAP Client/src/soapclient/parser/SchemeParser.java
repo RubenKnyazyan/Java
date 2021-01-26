@@ -26,6 +26,10 @@ public class SchemeParser {
     private ArrayList<String> methods;
     private HashMap<String, String> actions ;
 
+    public HashMap<String, String> getActions() {
+        return actions;
+    }
+
     public SchemeParser(File inputFile) {
 
         try {
