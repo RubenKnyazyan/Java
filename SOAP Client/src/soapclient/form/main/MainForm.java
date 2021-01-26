@@ -307,7 +307,7 @@ public class MainForm extends JFrame {
 
                         this.saveProject = new SaveProject(this.parser.getFields(),this.parser.getActions(),saveFile.getPath()+".xml");
                         if (this.saveProject.run()) {
-                            JOptionPane.showMessageDialog(null, "Запрос сохранен");
+                            JOptionPane.showMessageDialog(null, "Запрос сохранен","Сохранение",JOptionPane.INFORMATION_MESSAGE );
                         }
                         else
                             throw new Exception("Ошибка при сохранении запроса");
@@ -323,7 +323,8 @@ public class MainForm extends JFrame {
 
             if (!ex.getMessage().equals("")) {
 
-                System.out.println(ex.getMessage());
+                JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
+//                System.out.println(ex.getMessage());
             }
         }
     }
