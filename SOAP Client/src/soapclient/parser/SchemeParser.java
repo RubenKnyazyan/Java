@@ -37,6 +37,11 @@ public class SchemeParser {
             this.schemeURL = new URL(schemeURL);
             this.builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             this.document =  this.builder.parse(this.schemeURL.openStream());
+
+            this.fields = new ArrayList<SchemeField>();
+            this.methods = new ArrayList<String>();
+            this.actions = new HashMap<>();
+
             result = true;
         } catch (ParserConfigurationException e) {
             result = false;
@@ -58,6 +63,11 @@ public class SchemeParser {
         try {
             this.builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             this.document =  this.builder.parse(inputFile);
+
+            this.fields = new ArrayList<SchemeField>();
+            this.methods = new ArrayList<String>();
+            this.actions = new HashMap<>();
+
             result = true;
         } catch (ParserConfigurationException e) {
             result = false;
@@ -137,6 +147,7 @@ public class SchemeParser {
                     case "binding":
                         parseSOAPActions(element);
                         break;
+
                 }
             }
             result = true;
@@ -209,6 +220,106 @@ public class SchemeParser {
         }
         finally {
             return action;
+        }
+    }
+    public Boolean loadProject() {
+
+        Boolean result = false;
+        try {
+
+            Node root = this.document.getDocumentElement();
+            NodeList chieldItems = root.getChildNodes();
+            for (int i=0; i < chieldItems.getLength(); i++) {
+
+                Node item = chieldItems.item(i);
+                if (item.getNodeName().equals("FieldList")) {
+
+                    this.findFields(item);
+                }
+                if (item.getNodeName().equals("MethodList")) {
+
+                    this.findMethods(item);
+                }
+                result = true;
+            }
+        }
+        catch (Exception ex) {
+
+            ex.printStackTrace();
+            result = false;
+        }
+        finally {
+
+            return result;
+        }
+    }
+
+    private void findMethods(Node element) {
+
+        NodeList chieldNodes = element.getChildNodes();
+        String action = "";
+        String method = "";
+        for (int i=0; i< chieldNodes.getLength(); i++) {
+
+            Node item = chieldNodes.item(i);
+            if (item.getNodeName().equals("Method"))
+                this.findMethods(item);
+            else {
+                if(item.getNodeName().equals("Action"))
+                    action = item.getTextContent();
+                if(item.getNodeName().equals("Name"))
+                    method = item.getTextContent();
+            }
+        }
+        if (element.getNodeName().equals("Method")) {
+
+            if (
+                    !action.equals("") && action != null &&
+                            !method.equals("") && method != null
+            ) {
+
+                this.methods.add(method);
+                this.actions.put(method, action);
+            }
+        }
+    }
+
+    private void findFields(Node element) {
+
+        NodeList chieldNodes = element.getChildNodes();
+        SchemeField schemeField = new SchemeField();
+        for (int i=0; i< chieldNodes.getLength(); i++) {
+
+            Node item = chieldNodes.item(i);
+            if (item.getNodeName().equals("Field"))
+                this.findFields(item);
+            else {
+
+                if(item.getNodeName().equals("Name"))
+                    schemeField.setName(item.getTextContent());
+               if(item.getNodeName().equals("Type"))
+                   schemeField.setType(item.getTextContent());
+               if(item.getNodeName().equals("Table"))
+                   schemeField.setTable(item.getTextContent());
+               if(item.getNodeName().equals("Array"))
+                   schemeField.setArray(Boolean.valueOf(item.getTextContent()));
+               if(item.getNodeName().equals("Key"))
+                   schemeField.setKey(Boolean.valueOf(item.getTextContent()));
+               if(item.getNodeName().equals("Value"))
+                   schemeField.setValue(item.getTextContent());
+            }
+        }
+        if (schemeField != null) {
+
+            if (element.getNodeName().equals("Field")) {
+
+                if (
+                        !schemeField.getName().equals("") && schemeField.getName() != null &&
+                        !schemeField.getType().equals("") && schemeField.getType() != null
+                ) {
+                    this.fields.add(schemeField);
+                }
+            }
         }
     }
     private void parseMethods(Node element) {

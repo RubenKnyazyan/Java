@@ -11,12 +11,33 @@ public class SchemeField {
     private boolean isKey;
     private String table;
     private JComponent inputField;
+    private String value;
+
+    public SchemeField() {
+    }
 
     public SchemeField(String name, String type, boolean isArray, boolean isKey) {
         this.name = name;
         this.type = type;
         this.isArray = isArray;
         this.isKey = isKey;
+    }
+
+    public SchemeField(String name, String type, boolean isArray, boolean isKey, String table, String value) {
+        this.name = name;
+        this.type = type;
+        this.isArray = isArray;
+        this.isKey = isKey;
+        this.table = table;
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public JComponent getInputField() {

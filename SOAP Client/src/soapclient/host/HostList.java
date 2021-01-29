@@ -16,6 +16,22 @@ public class HostList {
     private ArrayList<String> hostNameList;
     private ArrayList<Host> hostArrayList;
 
+    public Boolean resetHostList() {
+
+        Boolean result = false;
+        try {
+            this.hostArrayList = new ArrayList<Host>();
+            this.hostNameList = new ArrayList<String>();
+            this.initHostList();
+            result = true;
+        }
+        catch (Exception ex) {
+            result = false;
+        }
+        finally {
+            return result;
+        }
+    }
     public HostList() {
 
         this.hostArrayList = new ArrayList<Host>();
@@ -23,7 +39,7 @@ public class HostList {
         this.initHostList();
     }
 
-    public void initHostList() {
+    private void initHostList() {
 
         try {
 

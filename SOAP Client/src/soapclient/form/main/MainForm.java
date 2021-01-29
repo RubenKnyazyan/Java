@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -38,6 +40,7 @@ public class MainForm extends JFrame {
     private HostList hostList;
     private JMenu status;
     private SaveProject saveProject;
+    private JComboBox list_hosts;
 
     public MainForm() {
         super("SOAP Client");
@@ -135,11 +138,21 @@ public class MainForm extends JFrame {
 
         JMenu myMenu = new JMenu("Проект");
 
+        JMenuItem itemHosts = new JMenuItem("Обновить список хостов");
+        itemHosts.setName("hosts");
+        itemHosts.addActionListener(new MainFormAction(itemHosts));
+
         JMenuItem itemSaveRequest = new JMenuItem("Сохранить запрос");
         itemSaveRequest.setName("save_request");
         itemSaveRequest.addActionListener(new MainFormAction(itemSaveRequest));
 
+        JMenuItem itemLoadRequest = new JMenuItem("Загрузить запрос");
+        itemLoadRequest.setName("load_request");
+        itemLoadRequest.addActionListener(new MainFormAction(itemLoadRequest));
+
+        myMenu.add(itemHosts);
         myMenu.add(itemSaveRequest);
+        myMenu.add(itemLoadRequest);
 
         return myMenu;
     }
@@ -151,34 +164,35 @@ public class MainForm extends JFrame {
 //        JPanel host = new JPanel(new GridLayout(1,2,10,10));
         JLabel label_host = new JLabel("Хост");
 
-        JComboBox list_methods = new JComboBox(this.parser.getMethods().toArray());
-        list_methods.setName("methods");
-       if (!list_methods.getItemAt(0).toString().equals("") && list_methods.getItemAt(0) != null) {
+        if (this.parser.getMethods().size() > 0 && this.parser.getActions().size() > 0) {
+            JComboBox list_methods = new JComboBox(this.parser.getMethods().toArray());
+            list_methods.setName("methods");
+            if (!list_methods.getItemAt(0).toString().equals("") && list_methods.getItemAt(0) != null) {
 
-           this.method = list_methods.getItemAt(0).toString();
-       }
-
-        this.method = list_methods.getSelectedItem().toString();
-        list_methods.addActionListener(new MainFormAction(list_methods));
-
-        JComboBox list_hosts = new JComboBox(this.hostList.getHostNameList().toArray());
-        list_hosts.setName("host");
-
-        if (list_hosts.getItemAt(0) != null && !list_hosts.getItemAt(0).toString().equals("") ) {
-
-            if (this.autorization != null) {
-                this.autorization.setHost(this.hostList.getHostValue(list_hosts.getItemAt(0).toString()));
+                this.method = list_methods.getItemAt(0).toString();
             }
+
+            this.method = list_methods.getSelectedItem().toString();
+            list_methods.addActionListener(new MainFormAction(list_methods));
+
+            this.list_hosts = new JComboBox(this.hostList.getHostNameList().toArray());
+            this.list_hosts.setName("host");
+
+            if (this.list_hosts.getItemAt(0) != null && !this.list_hosts.getItemAt(0).toString().equals("")) {
+
+                if (this.autorization != null) {
+                    this.autorization.setHost(this.hostList.getHostValue(this.list_hosts.getItemAt(0).toString()));
+                }
+            }
+
+            this.list_hosts.addActionListener(new MainFormAction(this.list_hosts));
+
+            method.add(label_host);
+            method.add(this.list_hosts);
+
+            method.add(label_methods);
+            method.add(list_methods);
         }
-
-        list_hosts.addActionListener(new MainFormAction(list_hosts));
-
-        method.add(label_host);
-        method.add(list_hosts);
-
-        method.add(label_methods);
-        method.add(list_methods);
-
         return method;
     }
 
@@ -187,72 +201,103 @@ public class MainForm extends JFrame {
         panel.validate();
         panel.repaint();
     }
-    private void setFieldsPanel() {
+    private void setFieldsPanel() throws ParseException {
 
-        ArrayList<SchemeField> fieldList = this.parser.getFields();
+        if (this.parser.getFields().size() > 0) {
+            ArrayList<SchemeField> fieldList = this.parser.getFields();
 
-        JPanel panelFields = new JPanel(new GridLayout(fieldList.size(),2,10,10));
-        JScrollPane scrollPane = new JScrollPane(panelFields);
-        //задаем padding, чтобы внутренние элементы были не в плотную
-        panelFields.setBorder(new EmptyBorder(10, 10, 10, 10));
-        for (int index=0; index < fieldList.size(); index++) {
+            JPanel panelFields = new JPanel(new GridLayout(fieldList.size(), 2, 10, 10));
+            JScrollPane scrollPane = new JScrollPane(panelFields);
+            //задаем padding, чтобы внутренние элементы были не в плотную
+            panelFields.setBorder(new EmptyBorder(10, 10, 10, 10));
+            for (int index = 0; index < fieldList.size(); index++) {
 
-            SchemeField field = fieldList.get(index);
+                SchemeField field = fieldList.get(index);
 
-            //добавляем метку с именем поля
-            JLabel fieldName = (field.isKey()) ? new JLabel("Key : " + field.getName()) : new JLabel(field.getName());
-            panelFields.add(fieldName);
-            // в зависимости от типа поля будем добавлять разный Input
-            switch (field.getType()) {
+                //добавляем метку с именем поля
+                JLabel fieldName = (field.isKey()) ? new JLabel("Key : " + field.getName()) : new JLabel(field.getName());
+                panelFields.add(fieldName);
+                // в зависимости от типа поля будем добавлять разный Input
+                switch (field.getType()) {
 
-                case "BooleanType":
-                    JCheckBox checkBox = new JCheckBox();
-                    panelFields.add(checkBox);
-                    //добавляем к объекту поля input, чтобы потом получать значение
-                    field.setInputField(checkBox);
-                    break;
-                case "DurationType":
-                    //проверить как записывается значение
-                    JSpinner timeSpinnerDuration = new JSpinner(new SpinnerDateModel());
-                    JSpinner.DateEditor timeEditorDuration = new JSpinner.DateEditor(timeSpinnerDuration, "HH:mm:ss");
-                    timeSpinnerDuration.setEditor(timeEditorDuration);
-                    timeSpinnerDuration.setValue(new Date());
-                    //добавляем в общий блок полей
-                    panelFields.add(timeSpinnerDuration);
-                    //добавляем к объекту поля input, чтобы потом получать значение
-                    field.setInputField(timeSpinnerDuration);
-                    break;
-                case "DateTimeType":
-                    JSpinner timeSpinner = new JSpinner(new SpinnerDateModel());
-                    JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "dd.MM.yyyy HH:mm:ss");
-                    timeSpinner.setEditor(timeEditor);
-                    timeSpinner.setValue(new Date());
-                    //добавляем в общий блок полей
-                    panelFields.add(timeSpinner);
-                    //добавляем к объекту поля input, чтобы потом получать значение
-                    field.setInputField(timeSpinner);
-                    break;
-                case "DecimalType":
-                    JTextField numberField = new JTextField();
-                    panelFields.add(numberField);
-                    //добавляем к объекту поля input, чтобы потом получать значение
-                    field.setInputField(numberField);
-                    break;
-                case "StringType":
-                    JTextField inputField = new JTextField();
-                    panelFields.add(inputField);
-                    //добавляем к объекту поля input, чтобы потом получать значение
-                    field.setInputField(inputField);
-                    break;
+                    case "BooleanType":
+                        JCheckBox checkBox = new JCheckBox();
+                        if (!field.getValue().equals("") && field.getValue() != null) {
+
+                            if (Boolean.valueOf(field.getValue()).equals(true))
+                                checkBox.setSelected(true);
+                        }
+                        panelFields.add(checkBox);
+                        //добавляем к объекту поля input, чтобы потом получать значение
+                        field.setInputField(checkBox);
+                        break;
+                    case "DurationType":
+                        //проверить как записывается значение
+                        JSpinner timeSpinnerDuration = new JSpinner(new SpinnerDateModel());
+                        JSpinner.DateEditor timeEditorDuration = new JSpinner.DateEditor(timeSpinnerDuration, "HH:mm:ss");
+                        timeSpinnerDuration.setEditor(timeEditorDuration);
+                        if (!field.getValue().equals("") && field.getValue() != null) {
+
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+                            Date date =  simpleDateFormat.parse(field.getValue());
+                            simpleDateFormat.applyPattern("HH:mm:ss");
+                            timeSpinnerDuration.setValue(date);
+                        }
+                        else
+                            timeSpinnerDuration.setValue(new Date());
+                        //добавляем в общий блок полей
+                        panelFields.add(timeSpinnerDuration);
+                        //добавляем к объекту поля input, чтобы потом получать значение
+                        field.setInputField(timeSpinnerDuration);
+                        break;
+                    case "DateTimeType":
+                        JSpinner timeSpinner = new JSpinner(new SpinnerDateModel());
+                        JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "dd.MM.yyyy HH:mm:ss");
+                        timeSpinner.setEditor(timeEditor);
+                        if (!field.getValue().equals("") && field.getValue() != null) {
+
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                            Date date =  simpleDateFormat.parse(field.getValue());
+                            simpleDateFormat.applyPattern("dd.MM.yyyy HH:mm:ss");
+                            timeSpinner.setValue(date);
+                        }
+                        else {
+
+                            timeSpinner.setValue(new Date());
+                        }
+                        //добавляем в общий блок полей
+                        panelFields.add(timeSpinner);
+                        //добавляем к объекту поля input, чтобы потом получать значение
+                        field.setInputField(timeSpinner);
+                        break;
+                    case "DecimalType":
+                        JTextField numberField = new JTextField();
+                        panelFields.add(numberField);
+                        if (!field.getValue().equals("") && field.getValue() != null)
+                            numberField.setText(field.getValue());
+                        //добавляем к объекту поля input, чтобы потом получать значение
+                        field.setInputField(numberField);
+                        break;
+                    case "StringType":
+                        JTextField inputField = new JTextField();
+                        panelFields.add(inputField);
+                        if (!field.getValue().equals("") && field.getValue() != null)
+                            inputField.setText(field.getValue());
+                        //добавляем к объекту поля input, чтобы потом получать значение
+                        field.setInputField(inputField);
+                        break;
+                }
             }
+            this.request.setFieldList(fieldList);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane.setBounds(20, 80, this.FIELD_PANEL_WIDTH, 460);
+            this.schemePanel.add(scrollPane);
+            JPanel methods = this.setMethods();
+            methods.setBounds(20, 10, this.FIELD_PANEL_WIDTH, 60);
+            this.schemePanel.add(methods);
         }
-        this.request.setFieldList(fieldList);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(20,80,this.FIELD_PANEL_WIDTH,460);
-        this.schemePanel.add(scrollPane);
-        JPanel methods = this.setMethods();
-        methods.setBounds(20,10, this.FIELD_PANEL_WIDTH,60);
-        this.schemePanel.add(methods);
+        else
+            System.out.println(this.parser.getFields().size());
     }
     private JScrollPane createResponseWindow() {
 
@@ -284,6 +329,24 @@ public class MainForm extends JFrame {
 
         xmlTextPane.setBounds(20,40,this.FIELD_PANEL_WIDTH,500);
         return scrollPane;
+    }
+    private void reloadHosts() {
+
+        this.list_hosts.removeAllItems();
+        this.hostList.resetHostList();
+//        DefaultComboBoxModel<ArrayList> model = new DefaultComboBoxModel<>(this.hostList.getHostNameList().toArray());
+        
+        //= new JComboBox(this.hostList.getHostNameList().toArray());
+//        this.list_hosts.setName("host");
+//
+//        if (this.list_hosts.getItemAt(0) != null && !this.list_hosts.getItemAt(0).toString().equals("")) {
+//
+//            if (this.autorization != null) {
+//                this.autorization.setHost(this.hostList.getHostValue(this.list_hosts.getItemAt(0).toString()));
+//            }
+//        }
+//
+//        this.list_hosts.addActionListener(new MainFormAction(this.list_hosts));
     }
     private void showAuthWindow() {
 
@@ -319,7 +382,7 @@ public class MainForm extends JFrame {
                     if (this.parser.getFields().size() > 0) {
 
                         if (this.saveProject.initSave(this.parser.getFields(),this.parser.getActions(),saveFile.getPath()+".xml")) {
-                            
+
                             if (this.saveProject.run()) {
                                 JOptionPane.showMessageDialog(null, "Запрос сохранен", "Сохранение", JOptionPane.INFORMATION_MESSAGE);
                             } else
@@ -381,7 +444,7 @@ public class MainForm extends JFrame {
             System.out.println("Scheme address canceled");
         }
     }
-    private void showFileChooser() {
+    private void showFileChooser(String action) {
 
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -389,25 +452,43 @@ public class MainForm extends JFrame {
             try {
                 inputFile = fileChooser.getSelectedFile();
                 if (this.parser.initParser(inputFile) ) {
-                    if (this.parser.startParse()) {
-                        //clear main form GUI panel
-                        this.schemePanel.removeAll();
-                        //cоздает список полей
-                        this.setFieldsPanel();
-                        //redraw GUI main Panel
-                        this.redrawPanel(this.schemePanel);
+                    switch (action) {
+                        case "scheme":
+                            if (this.parser.startParse()) {
+                                //clear main form GUI panel
+                                this.schemePanel.removeAll();
+                                //cоздает список полей
+                                this.setFieldsPanel();
+                                //redraw GUI main Panel
+                                this.redrawPanel(this.schemePanel);
+                            }
+                            else
+                                throw new Exception("Ошибка при разборе файла - не удалось распарсить");
+                            break;
+                        case "load_request":
+                            if (this.parser.loadProject()) {
+                                //clear main form GUI panel
+                                this.schemePanel.removeAll();
+                                //cоздает список полей
+                                this.setFieldsPanel();
+                                //redraw GUI main Panel
+                                this.redrawPanel(this.schemePanel);
+                            }
+                            else
+                                throw new Exception("Ошибка при загрузке сохраненного проекта - не удалось распарсить");
+                            break;
                     }
-                    else
-                        throw new Exception("Ошибка при разборе файла - не удалось распарсить");
+
                 }
                 else
                     throw new Exception("Ошибка при получении чтении файла");
             }
             catch (Exception ex) {
+
                 if (!ex.getMessage().equals("")) {
 
                     JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
-//                System.out.println(ex.getMessage());
+                    ex.printStackTrace();
                 }
             }
         }
@@ -489,7 +570,7 @@ public class MainForm extends JFrame {
                 switch(this.menuItem.getName().toLowerCase()) {
 
                     case "scheme":
-                        showFileChooser();
+                        showFileChooser("scheme");
                         break;
                     case "scheme_url":
                         showURLDialog();
@@ -505,6 +586,12 @@ public class MainForm extends JFrame {
                         break;
                     case "save_request":
                         saveRequest();
+                        break;
+                    case "hosts":
+                        reloadHosts();
+                        break;
+                    case "load_request":
+                        showFileChooser("load_request");
                         break;
                 }
             }
@@ -523,5 +610,6 @@ public class MainForm extends JFrame {
             }
         }
     }
+
 
 }
