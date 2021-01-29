@@ -11,6 +11,9 @@ public class Auth {
         this.password = password;
     }
 
+    public Auth() {
+    }
+
     public String getPassword() {
 //        return this.encodeHexString(this.password);
         return  this.password;

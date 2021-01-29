@@ -23,6 +23,18 @@ public  class SoapApacheHttpClient {
     private String Cookie = "";
     private Auth autorization;
 
+    public Auth getAutorization() {
+        return autorization;
+    }
+
+    public void setAutorization(Auth autorization) {
+        this.autorization = autorization;
+    }
+
+    public SoapApacheHttpClient() {
+
+    }
+
     public SoapApacheHttpClient(Auth autorization) {
 
         this.autorization = autorization;

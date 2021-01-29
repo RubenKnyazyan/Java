@@ -43,6 +43,9 @@ public class SOAPRequest {
         this.fieldList = fieldList;
     }
 
+    public SOAPRequest() {
+    }
+
     public  String generateMessage(String requestMethod) {
 
         this.body = "";

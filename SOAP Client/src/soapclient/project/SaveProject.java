@@ -30,6 +30,9 @@ public class SaveProject {
         this.actions = actionMap;
     }
 
+    public SaveProject() {
+    }
+
     public SaveProject(ArrayList<SchemeField> fieldArrayList) {
         this.fieldArrayList = fieldArrayList;
     }
@@ -171,6 +174,24 @@ public class SaveProject {
         finally {
 
             return result;
+        }
+    }
+
+    public boolean initSave(ArrayList<SchemeField> fieldArrayList, HashMap<String,String> actionMap, String directory) {
+
+        Boolean result = false;
+        try {
+
+            this.fieldArrayList = fieldArrayList;
+            this.Directory = directory;
+            this.actions = actionMap;
+            result = true;
+        }
+        catch (Exception ex) {
+            result = false;
+        }
+        finally {
+            return result ;
         }
     }
 }

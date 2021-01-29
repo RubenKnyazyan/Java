@@ -45,6 +45,16 @@ public class MainForm extends JFrame {
         //во весь экран устройства
 //        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setSize(1300,600);
+        //класс авторизации
+        this.autorization = new Auth();
+        //класс для выполнения запросов
+        this.soapClientHTTP = new SoapApacheHttpClient();
+        //класс парса схемы
+        this.parser = new SchemeParser();
+        //класс сохранения запросов
+        this.saveProject = new SaveProject();
+        //класс для генерации сообщений
+        this.request = new SOAPRequest();
         //вычитываем хосты из файла
         this.hostList= new HostList();
         //file opener inicialization
@@ -73,6 +83,7 @@ public class MainForm extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
         //добавляем элементы меню - верхний уровень
+        menuBar.add(createProjectMenu());
         menuBar.add(createSchemeMenu());
         menuBar.add(createAuthMenu());
         //добавим меню на фрейм
@@ -106,28 +117,32 @@ public class MainForm extends JFrame {
         itemAuth.setName("auth");
         JMenuItem itemGenerateMessage = new JMenuItem("Сгенерировать сообщение");
         itemGenerateMessage.setName("request");
-        //закрываем доступность до выбора схемы
-//        itemGenerateMessage.setEnabled(false);
+
         JMenuItem itemSendMessage = new JMenuItem("Отправить запрос");
         itemSendMessage.setName("send");
-        //закртываем доступность до генерирования сообщения
-//        itemSendMessage.setEnabled(false);
-        JMenuItem itemSaveRequest = new JMenuItem("Сохранить запрос");
-        itemSaveRequest.setName("save_request");
-        //закртываем доступность до генерирования сообщения
-//        itemSaveRequest.setEnabled(false);
+
         itemAuth.addActionListener(new MainFormAction(itemAuth));
         itemGenerateMessage.addActionListener(new MainFormAction(itemGenerateMessage));
         itemSendMessage.addActionListener(new MainFormAction(itemSendMessage));
-        itemSaveRequest.addActionListener(new MainFormAction(itemSaveRequest));
         myMenu.add(itemAuth);
         myMenu.add(itemGenerateMessage);
         myMenu.add(itemSendMessage);
-        myMenu.add(itemSaveRequest);
         //возвращаем
         return myMenu;
     }
 
+    private JMenu createProjectMenu() {
+
+        JMenu myMenu = new JMenu("Проект");
+
+        JMenuItem itemSaveRequest = new JMenuItem("Сохранить запрос");
+        itemSaveRequest.setName("save_request");
+        itemSaveRequest.addActionListener(new MainFormAction(itemSaveRequest));
+
+        myMenu.add(itemSaveRequest);
+
+        return myMenu;
+    }
     private JPanel setMethods() {
 
         JPanel method = new JPanel(new GridLayout(2,2,10,10));
@@ -231,7 +246,7 @@ public class MainForm extends JFrame {
                     break;
             }
         }
-        request = new SOAPRequest(fieldList);
+        this.request.setFieldList(fieldList);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(20,80,this.FIELD_PANEL_WIDTH,460);
         this.schemePanel.add(scrollPane);
@@ -252,7 +267,7 @@ public class MainForm extends JFrame {
         HTMLEditorKit kit = new HTMLEditorKit();
 
         FormHelper.setDefaultCSS(kit);
-        this.xmlTextPane.setEditorKit(kit);
+//        this.xmlTextPane.setEditorKit(kit);
 
         // create some simple html as a string
         String htmlString = "<html>\n"
@@ -265,9 +280,6 @@ public class MainForm extends JFrame {
                 + "<p>Указать логин, пароль, хост можно в любой момент, но до отправки запроса</p>\n"
                 + "</body>\n";
 
-        // create a document, set it on the jeditorpane, then add the html
-//        Document doc = kit.createDefaultDocument();
-//        jEditorPane.setDocument(doc);
         xmlTextPane.setText(htmlString);
 
         xmlTextPane.setBounds(20,40,this.FIELD_PANEL_WIDTH,500);
@@ -285,8 +297,9 @@ public class MainForm extends JFrame {
         int option = JOptionPane.showConfirmDialog(null, message, "Авторизация", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
         if (option == JOptionPane.OK_OPTION) {
 
-            this.autorization = new Auth(username.getText(),password.getText());
-            this.soapClientHTTP = new SoapApacheHttpClient(this.autorization);
+            this.autorization.setLogin(username.getText());
+            this.autorization.setPassword(password.getText());
+            this.soapClientHTTP.setAutorization(this.autorization);
 
         } else {
             System.out.println("Login canceled");
@@ -305,12 +318,13 @@ public class MainForm extends JFrame {
                 if (this.parser != null) {
                     if (this.parser.getFields().size() > 0) {
 
-                        this.saveProject = new SaveProject(this.parser.getFields(),this.parser.getActions(),saveFile.getPath()+".xml");
-                        if (this.saveProject.run()) {
-                            JOptionPane.showMessageDialog(null, "Запрос сохранен","Сохранение",JOptionPane.INFORMATION_MESSAGE );
+                        if (this.saveProject.initSave(this.parser.getFields(),this.parser.getActions(),saveFile.getPath()+".xml")) {
+                            
+                            if (this.saveProject.run()) {
+                                JOptionPane.showMessageDialog(null, "Запрос сохранен", "Сохранение", JOptionPane.INFORMATION_MESSAGE);
+                            } else
+                                throw new Exception("Ошибка при сохранении запроса");
                         }
-                        else
-                            throw new Exception("Ошибка при сохранении запроса");
                     }
                     else
                         throw new Exception("Ошибка при сохранении. Не удалось найти поля запроса");
@@ -337,21 +351,30 @@ public class MainForm extends JFrame {
         int option = JOptionPane.showConfirmDialog(null, message, "Ссылка на схему", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
         if (option == JOptionPane.OK_OPTION) {
 
-            String url = (schemeURL.getText().indexOf("http://") > -1) ?  schemeURL.getText() : "http://"+schemeURL.getText();
-            this.parser = new SchemeParser(url);
-            if (this.parser.startParse()) {
-                //clear main form GUI panel
-                this.schemePanel.removeAll();
-                //открыть доступность кнопки для генерирования сообщения
-//            JMenuItem itemGenerateMessage  =  (JMenuItem) FormHelper.findElementByName(this,"request");
-//            System.out.println(itemGenerateMessage);
-                //cоздает список полей
-                this.setFieldsPanel();
-                //redraw GUI main Panel
-                this.redrawPanel(this.schemePanel);
+            try {
+                String url = (schemeURL.getText().indexOf("http://") > -1) ? schemeURL.getText() : "http://" + schemeURL.getText();
+                if (this.parser.initParser(url)) {
+
+                    if (this.parser.startParse()) {
+                        //clear main form GUI panel
+                        this.schemePanel.removeAll();
+                        //cоздает список полей
+                        this.setFieldsPanel();
+                        //redraw GUI main Panel
+                        this.redrawPanel(this.schemePanel);
+                    } else {
+                       throw new Exception("Ошибка при парсе - проверьте схему");
+                    }
+                }
+                else
+                    throw new Exception("Ошибка при получении схемы - проверьте адрес" );
             }
-            else  {
-                System.out.println("Ошибка при получении схемы - проверьте адрес");
+            catch (Exception ex) {
+                if (!ex.getMessage().equals("")) {
+
+                    JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
+//                System.out.println(ex.getMessage());
+                }
             }
 
         } else {
@@ -360,22 +383,32 @@ public class MainForm extends JFrame {
     }
     private void showFileChooser() {
 
-//        System.out.println(FormHelper.findElementByName(this,"JMenu","request"));
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
 
-            inputFile = fileChooser.getSelectedFile();
-            this.parser = new SchemeParser(inputFile);
-            if (this.parser.startParse()) {
-                //clear main form GUI panel
-                this.schemePanel.removeAll();
-                //открыть доступность кнопки для генерирования сообщения
-//            JMenuItem itemGenerateMessage  =  (JMenuItem) FormHelper.findElementByName(this,"request");
-//            System.out.println(itemGenerateMessage);
-                //cоздает список полей
-                this.setFieldsPanel();
-                //redraw GUI main Panel
-                this.redrawPanel(this.schemePanel);
+            try {
+                inputFile = fileChooser.getSelectedFile();
+                if (this.parser.initParser(inputFile) ) {
+                    if (this.parser.startParse()) {
+                        //clear main form GUI panel
+                        this.schemePanel.removeAll();
+                        //cоздает список полей
+                        this.setFieldsPanel();
+                        //redraw GUI main Panel
+                        this.redrawPanel(this.schemePanel);
+                    }
+                    else
+                        throw new Exception("Ошибка при разборе файла - не удалось распарсить");
+                }
+                else
+                    throw new Exception("Ошибка при получении чтении файла");
+            }
+            catch (Exception ex) {
+                if (!ex.getMessage().equals("")) {
+
+                    JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
+//                System.out.println(ex.getMessage());
+                }
             }
         }
     }
@@ -389,20 +422,44 @@ public class MainForm extends JFrame {
         if (this.autorization != null) {
             this.autorization.setHost(this.hostList.getHostValue(item.getSelectedItem().toString()));
         }
+        else
+            JOptionPane.showMessageDialog(null,  "Необходимо вначале указать логин и пароль","Упс", JOptionPane.ERROR_MESSAGE);
     }
     private void createMessage() {
 
-        // create jeditorpane
-        this.xmlTextPane = new XmlTextPane();
-        this.xmlTextPane.setEditable(true);
-        this.xmlTextPane.setText(this.request.generateMessage(this.method));
-        this.redrawPanel(this.mainGUIPanel);
+        try {
+            if (this.parser.getFields().size() > 0) {
+                if (this.method != null && !this.method.equals("")) {
+                    // create jeditorpane
+                    this.xmlTextPane = new XmlTextPane();
+                    this.xmlTextPane.setEditable(true);
+                    String message = this.request.generateMessage(this.method);
+                    if (message != null && !message.equals("")) {
+
+                        this.xmlTextPane.setText(message);
+                        this.redrawPanel(this.mainGUIPanel);
+                    } else
+                        throw new Exception("Не удалось сгенерировать сообщение - попробуйте еще раз");
+                } else
+                    throw new Exception("Не выбран метод для оправки запроса");
+            }
+            else
+                throw new Exception("Нет полей для генерации сообщения");
+        }
+        catch (Exception ex) {
+
+            if (!ex.getMessage().equals("")) {
+
+                JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
+//                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     private void sendRequest() {
 
         try {
-           this.xmlTextPane.setText( String.valueOf((this.soapClientHTTP.sendPOST(this.request.generateMessage(this.method), this.parser.getActionByMethod(this.method)))));
+           this.xmlTextPane.setText( String.valueOf((this.soapClientHTTP.sendPOST(this.xmlTextPane.getText(), this.parser.getActionByMethod(this.method)))));
         }
         catch (IOException ex) {
             ex.printStackTrace();

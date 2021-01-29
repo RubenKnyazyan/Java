@@ -30,24 +30,68 @@ public class SchemeParser {
         return actions;
     }
 
-    public SchemeParser(File inputFile) {
+    public Boolean initParser(String schemeURL) {
 
+        Boolean result = false;
+        try {
+            this.schemeURL = new URL(schemeURL);
+            this.builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            this.document =  this.builder.parse(this.schemeURL.openStream());
+            result = true;
+        } catch (ParserConfigurationException e) {
+            result = false;
+            e.printStackTrace();
+        } catch (IOException e) {
+            result = false;
+            e.printStackTrace();
+        } catch (SAXException e) {
+            result = false;
+            e.printStackTrace();
+        }
+        finally {
+            return  result;
+        }
+    }
+    public Boolean initParser(File inputFile) {
+
+        Boolean result = false;
         try {
             this.builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             this.document =  this.builder.parse(inputFile);
+            result = true;
+        } catch (ParserConfigurationException e) {
+            result = false;
+            e.printStackTrace();
+        } catch (IOException e) {
+            result = false;
+            e.printStackTrace();
+        } catch (SAXException e) {
+            result = false;
+            e.printStackTrace();
+        }
+        finally {
+            return  result;
+        }
+    }
+
+    public SchemeParser() {
+
+        this.fields = new ArrayList<SchemeField>();
+        this.methods = new ArrayList<String>();
+        this.actions = new HashMap<>();
+    }
+
+    public SchemeParser(File inputFile) {
+
+        try {
+
             this.fields = new ArrayList<SchemeField>();
             this.methods = new ArrayList<String>();
             this.actions = new HashMap<>();
         }
-        catch (NullPointerException | ParserConfigurationException ex) {
+        catch (NullPointerException ex) {
 
             this.logger(ex.toString());
-        }
-        catch (SAXException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
