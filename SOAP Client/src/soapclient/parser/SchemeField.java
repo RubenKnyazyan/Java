@@ -14,6 +14,7 @@ public class SchemeField {
     private String value;
 
     public SchemeField() {
+        this.value = "";
     }
 
     public SchemeField(String name, String type, boolean isArray, boolean isKey) {
@@ -21,6 +22,7 @@ public class SchemeField {
         this.type = type;
         this.isArray = isArray;
         this.isKey = isKey;
+        this.value = "";
     }
 
     public SchemeField(String name, String type, boolean isArray, boolean isKey, String table, String value) {
@@ -53,6 +55,7 @@ public class SchemeField {
         this.type = type;
         this.isArray = isArray;
         this.isKey = false;
+        this.value = "";
     }
 
     public SchemeField(String name, String type) {
@@ -60,6 +63,7 @@ public class SchemeField {
         this.type = type;
         this.isKey = false;
         this.isArray = false;
+        this.value = "";
     }
 
     public String getTable() {

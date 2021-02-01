@@ -16,8 +16,4 @@
         <name>UAT</name>
         <value>http://tv-sm-12r2-017.ca.sbrf.ru:13082/ws</value>
     </item>
-    <item>
-        <name>PROD</name>
-        <value></value>
-    </item>
 </HOST>

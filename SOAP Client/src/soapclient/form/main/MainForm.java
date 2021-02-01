@@ -334,19 +334,17 @@ public class MainForm extends JFrame {
 
         this.list_hosts.removeAllItems();
         this.hostList.resetHostList();
-//        DefaultComboBoxModel<ArrayList> model = new DefaultComboBoxModel<>(this.hostList.getHostNameList().toArray());
-        
-        //= new JComboBox(this.hostList.getHostNameList().toArray());
-//        this.list_hosts.setName("host");
-//
-//        if (this.list_hosts.getItemAt(0) != null && !this.list_hosts.getItemAt(0).toString().equals("")) {
-//
-//            if (this.autorization != null) {
-//                this.autorization.setHost(this.hostList.getHostValue(this.list_hosts.getItemAt(0).toString()));
-//            }
-//        }
-//
-//        this.list_hosts.addActionListener(new MainFormAction(this.list_hosts));
+        ArrayList <String> host_list = this.hostList.getHostNameList();
+        for (int i=0; i < host_list.size(); i++) {
+
+            this.list_hosts.addItem(host_list.get(i));
+        }
+        if (this.list_hosts.getItemAt(0) != null && !this.list_hosts.getItemAt(0).toString().equals("")) {
+
+            if (this.autorization != null) {
+                this.autorization.setHost(this.hostList.getHostValue(this.list_hosts.getItemAt(0).toString()));
+            }
+        }
     }
     private void showAuthWindow() {
 
@@ -484,11 +482,11 @@ public class MainForm extends JFrame {
                     throw new Exception("Ошибка при получении чтении файла");
             }
             catch (Exception ex) {
-
+//                ex.printStackTrace();
                 if (!ex.getMessage().equals("")) {
 
                     JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
-                    ex.printStackTrace();
+
                 }
             }
         }
@@ -501,7 +499,9 @@ public class MainForm extends JFrame {
     private void selectedHost(JComboBox item) {
 
         if (this.autorization != null) {
-            this.autorization.setHost(this.hostList.getHostValue(item.getSelectedItem().toString()));
+            if (this.list_hosts.getSelectedItem() !=null) {
+                this.autorization.setHost(this.hostList.getHostValue(item.getSelectedItem().toString()));
+            }
         }
         else
             JOptionPane.showMessageDialog(null,  "Необходимо вначале указать логин и пароль","Упс", JOptionPane.ERROR_MESSAGE);
@@ -512,11 +512,11 @@ public class MainForm extends JFrame {
             if (this.parser.getFields().size() > 0) {
                 if (this.method != null && !this.method.equals("")) {
                     // create jeditorpane
-                    this.xmlTextPane = new XmlTextPane();
                     this.xmlTextPane.setEditable(true);
                     String message = this.request.generateMessage(this.method);
                     if (message != null && !message.equals("")) {
 
+                        System.out.println(1);
                         this.xmlTextPane.setText(message);
                         this.redrawPanel(this.mainGUIPanel);
                     } else
@@ -610,6 +610,4 @@ public class MainForm extends JFrame {
             }
         }
     }
-
-
 }
