@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="SBAPI_FileParser" resourceRoot="" soapui-version="5.0.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="SBAPI_FileParser" type="wsdl" bindingName="{http://servicecenter.peregrine.com/PWS}SBAPI_FileParser" soapVersion="1_1" anonymous="optional" definition="http://10.68.198.36:13081/sc62server/PWS/SBAPI_FileParser.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://10.68.198.36:13081/sc62server/PWS/SBAPI_FileParser.wsdl"><con:part><con:url>http://10.68.198.36:13081/sc62server/PWS/SBAPI_FileParser.wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://servicecenter.peregrine.com/PWS" xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/  http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:cmn="http://servicecenter.peregrine.com/PWS/Common" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://servicecenter.peregrine.com/PWS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://servicecenter.peregrine.com/PWS" version="2020-11-03 Rev 1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://servicecenter.peregrine.com/PWS">
+      <xs:import namespace="http://servicecenter.peregrine.com/PWS/Common" schemaLocation="http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/PWS/Common.xsd"/>
+      <xs:complexType name="SBAPI_FileParserKeysType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" nillable="true" type="cmn:DecimalType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+        <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+      </xs:complexType>
+      <xs:complexType name="SBAPI_FileParserInstanceType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" nillable="true" type="cmn:DecimalType"/>
+          <xs:element minOccurs="0" name="object" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="orgID" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="message" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="attachments" nillable="true" type="cmn:AttachmentsType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+        <xs:attribute name="uniquequery" type="xs:string" use="optional"/>
+        <xs:attribute name="recordid" type="xs:string" use="optional"/>
+        <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+      </xs:complexType>
+      <xs:complexType name="SBAPI_FileParserModelType">
+        <xs:sequence>
+          <xs:element name="keys" type="SBAPI_FileParserKeysType"/>
+          <xs:element name="instance" type="SBAPI_FileParserInstanceType"/>
+          <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+      </xs:complexType>
+      <xs:element name="RetrieveSBAPI_FileParserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_FileParserModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_FileParserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_FileParserModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_FileParserKeysListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_FileParserModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_FileParserKeysListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="SBAPI_FileParserKeysType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_FileParserListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="SBAPI_FileParserKeysType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+          <xs:attribute name="attachmentType" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_FileParserListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="instance" type="SBAPI_FileParserInstanceType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetXMLSBAPI_FileParserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_FileParserModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetXMLSBAPI_FileParserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_FileParserModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="RetrieveSBAPI_FileParserRequest">
+    <part element="ns:RetrieveSBAPI_FileParserRequest" name="RetrieveSBAPI_FileParserRequest"/>
+  </message>
+  <message name="RetrieveSBAPI_FileParserResponse">
+    <part element="ns:RetrieveSBAPI_FileParserResponse" name="RetrieveSBAPI_FileParserResponse"/>
+  </message>
+  <message name="RetrieveSBAPI_FileParserKeysListRequest">
+    <part element="ns:RetrieveSBAPI_FileParserKeysListRequest" name="RetrieveSBAPI_FileParserKeysListRequest"/>
+  </message>
+  <message name="RetrieveSBAPI_FileParserKeysListResponse">
+    <part element="ns:RetrieveSBAPI_FileParserKeysListResponse" name="RetrieveSBAPI_FileParserKeysListResponse"/>
+  </message>
+  <message name="RetrieveSBAPI_FileParserListRequest">
+    <part element="ns:RetrieveSBAPI_FileParserListRequest" name="RetrieveSBAPI_FileParserListRequest"/>
+  </message>
+  <message name="RetrieveSBAPI_FileParserListResponse">
+    <part element="ns:RetrieveSBAPI_FileParserListResponse" name="RetrieveSBAPI_FileParserListResponse"/>
+  </message>
+  <message name="SetXMLSBAPI_FileParserRequest">
+    <part element="ns:SetXMLSBAPI_FileParserRequest" name="SetXMLSBAPI_FileParserRequest"/>
+  </message>
+  <message name="SetXMLSBAPI_FileParserResponse">
+    <part element="ns:SetXMLSBAPI_FileParserResponse" name="SetXMLSBAPI_FileParserResponse"/>
+  </message>
+  <portType name="SBAPI_FileParser">
+    <operation name="RetrieveSBAPI_FileParser">
+      <documentation/>
+      <input message="ns:RetrieveSBAPI_FileParserRequest"/>
+      <output message="ns:RetrieveSBAPI_FileParserResponse"/>
+    </operation>
+    <operation name="RetrieveSBAPI_FileParserKeysList">
+      <documentation/>
+      <input message="ns:RetrieveSBAPI_FileParserKeysListRequest"/>
+      <output message="ns:RetrieveSBAPI_FileParserKeysListResponse"/>
+    </operation>
+    <operation name="RetrieveSBAPI_FileParserList">
+      <documentation/>
+      <input message="ns:RetrieveSBAPI_FileParserListRequest"/>
+      <output message="ns:RetrieveSBAPI_FileParserListResponse"/>
+    </operation>
+    <operation name="SetXMLSBAPI_FileParser">
+      <documentation/>
+      <input message="ns:SetXMLSBAPI_FileParserRequest"/>
+      <output message="ns:SetXMLSBAPI_FileParserResponse"/>
+    </operation>
+  </portType>
+  <binding name="SBAPI_FileParser" type="ns:SBAPI_FileParser">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="RetrieveSBAPI_FileParser">
+      <soap:operation soapAction="Retrieve" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="RetrieveSBAPI_FileParserKeysList">
+      <soap:operation soapAction="RetrieveKeysList" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="RetrieveSBAPI_FileParserList">
+      <soap:operation soapAction="RetrieveList" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetXMLSBAPI_FileParser">
+      <soap:operation soapAction="SetXML" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="SBAPI_FileParser">
+    <port binding="ns:SBAPI_FileParser" name="SBAPI_FileParser">
+      <soap:address location="http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/PWS/Common.xsd</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://servicecenter.peregrine.com/PWS/Common" version="2020-11-03 Rev 1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://servicecenter.peregrine.com/PWS/Common" xmlns:cmn="http://servicecenter.peregrine.com/PWS/Common">
+  <xs:complexType name="StringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute fixed="String" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DecimalType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute fixed="Decimal" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BooleanType">
+    <xs:simpleContent>
+      <xs:extension base="xs:boolean">
+        <xs:attribute fixed="Boolean" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:dateTime">
+        <xs:attribute fixed="DateTime" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:date">
+        <xs:attribute fixed="Date" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:time">
+        <xs:attribute fixed="Time" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DurationType">
+    <xs:simpleContent>
+      <xs:extension base="xs:duration">
+        <xs:attribute fixed="Duration" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="IntType">
+    <xs:simpleContent>
+      <xs:extension base="xs:int">
+        <xs:attribute fixed="Int" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ShortType">
+    <xs:simpleContent>
+      <xs:extension base="xs:short">
+        <xs:attribute fixed="Short" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LongType">
+    <xs:simpleContent>
+      <xs:extension base="xs:long">
+        <xs:attribute fixed="Long" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ByteType">
+    <xs:simpleContent>
+      <xs:extension base="xs:byte">
+        <xs:attribute fixed="Byte" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="FloatType">
+    <xs:simpleContent>
+      <xs:extension base="xs:float">
+        <xs:attribute fixed="Float" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DoubleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute fixed="Double" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Base64Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute fixed="Base64" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayType">
+    <xs:attribute fixed="Array" name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="StructureType">
+    <xs:attribute fixed="Structure" name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="AttachmentType">
+    <xs:attribute name="href" type="xs:string" use="optional"/>
+    <xs:attribute name="contentId" type="xs:string" use="optional"/>
+    <xs:attribute name="action" type="xs:string" use="optional"/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="len" type="xs:int" use="optional"/>
+    <xs:attribute name="charset" type="xs:string" use="optional"/>
+    <xs:attribute name="upload.by" type="xs:string" use="optional"/>
+    <xs:attribute name="upload.date" type="xs:string" use="optional"/>
+    <xs:attribute name="attachmentType" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="AttachmentsType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="AttachmentType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageType">
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute name="severity" type="xs:int" use="optional"/>
+        <xs:attribute name="module" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MessagesType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="message" type="MessageType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="FAILURE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:endpoint>http://SBT-IPO-006.delta.sbrf.ru:13070/sc62server/ws</con:endpoint><con:endpoint>http://SBT-IPO-006.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:endpoint>http://SBT-IPO-006.delta.sbrf.ru:13082/sc62server/ws</con:endpoint></con:endpoints><con:operation isOneWay="false" action="Retrieve" name="RetrieveSBAPI_FileParser" bindingOperationName="RetrieveSBAPI_FileParser" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:RetrieveSBAPI_FileParserRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:id type="Decimal" mandatory="?" readonly="?">?</pws:id>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:object type="String" mandatory="?" readonly="?">?</pws:object>
+               <!--Optional:-->
+               <pws:message type="String" mandatory="?" readonly="?">?</pws:message>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:RetrieveSBAPI_FileParserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="Retrieve"/></con:call></con:operation><con:operation isOneWay="false" action="RetrieveKeysList" name="RetrieveSBAPI_FileParserKeysList" bindingOperationName="RetrieveSBAPI_FileParserKeysList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:RetrieveSBAPI_FileParserKeysListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:id type="Decimal" mandatory="?" readonly="?">?</pws:id>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:object type="String" mandatory="?" readonly="?">?</pws:object>
+               <!--Optional:-->
+               <pws:message type="String" mandatory="?" readonly="?">?</pws:message>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:RetrieveSBAPI_FileParserKeysListRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="RetrieveKeysList"/></con:call></con:operation><con:operation isOneWay="false" action="RetrieveList" name="RetrieveSBAPI_FileParserList" bindingOperationName="RetrieveSBAPI_FileParserList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:RetrieveSBAPI_FileParserListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?" attachmentType="?">
+         <!--1 or more repetitions:-->
+         <pws:keys query="?" updatecounter="?">
+            <!--Optional:-->
+            <pws:id type="Decimal" mandatory="?" readonly="?">?</pws:id>
+         </pws:keys>
+      </pws:RetrieveSBAPI_FileParserListRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="RetrieveList"/></con:call></con:operation><con:operation isOneWay="false" action="SetXML" name="SetXMLSBAPI_FileParser" bindingOperationName="SetXMLSBAPI_FileParser" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:SetXMLSBAPI_FileParserRequest attachmentInfo=" " attachmentData=" " ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query=" ">
+            <pws:keys query=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:id type="Decimal" mandatory=" " readonly=" "> </pws:id>
+            </pws:keys>
+            <pws:instance query=" " uniquequery=" " recordid=" " updatecounter=" ">
+               <!--Optional:-->
+           <pws:message type="String" mandatory=" " readonly=" "><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<item>
+				<DATEBEG>2018-01-01</DATEBEG>
+				<DATEEND>9999-12-31</DATEEND>
+				<IDOBJ>30731004</IDOBJ>
+				<OBJCODE>000000011111</OBJCODE>
+				<OBJFULLNAME>Менеджер</OBJFULLNAME>
+				<OBJNAME>Менеджер</OBJNAME>
+				<OBJTYPE>S</OBJTYPE>
+				<DYN_ATTR>
+					<EPOST>
+						<item>
+							<DATEBEG>2018-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<EPOSTCODE>000000011111</EPOSTCODE>
+							<EPOSTID>20000387</EPOSTID>
+							<EPOSTNAME>Менеджер</EPOSTNAME>
+						</item>
+					</EPOST>
+					<PARENT>
+						<item>
+							<VALUE>10283405</VALUE>
+							<DATEBEG>2018-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<IDOBJ>30731004</IDOBJ>
+						</item>
+					</PARENT>
+				</DYN_ATTR>
+			</item>]]]]>><![CDATA[</pws:message>
+               <!--Optional:-->
+               <pws:object type="String" mandatory=" " readonly=" ">dept</pws:object>
+               <!--Optional:-->
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href=" " contentId=" " action=" " name=" " type=" " len=" " charset=" " upload.by=" " upload.date=" " attachmentType=" "/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory=" " readonly=" " severity=" " module=" "> </com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:SetXMLSBAPI_FileParserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>int_sap_hr</con:username><con:password>654321</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="SetXML"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:SetXMLSBAPI_FileParserRequest attachmentInfo=" " attachmentData=" " ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query=" ">
+            <pws:keys query=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:id type="Decimal" mandatory=" " readonly=" "> </pws:id>
+            </pws:keys>
+            <pws:instance query=" " uniquequery=" " recordid=" " updatecounter=" ">
+               <!--Optional:-->
+           <pws:message type="String" mandatory=" " readonly=" "><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<item>
+				<DATEBEG>2018-01-01</DATEBEG>
+				<DATEEND>9999-12-31</DATEEND>
+				<IDOBJ>30731004</IDOBJ>
+				<OBJCODE>000000011111</OBJCODE>
+				<OBJFULLNAME>Менеджер</OBJFULLNAME>
+				<OBJNAME>Менеджер</OBJNAME>
+				<OBJTYPE>S</OBJTYPE>
+				<DYN_ATTR>
+					<EPOST>
+						<item>
+							<DATEBEG>2018-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<EPOSTCODE>000000011111</EPOSTCODE>
+							<EPOSTID>20000387</EPOSTID>
+							<EPOSTNAME>Менеджер</EPOSTNAME>
+						</item>
+						<item>
+							<DATEBEG>2019-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<EPOSTCODE>000000011111</EPOSTCODE>
+							<EPOSTID>200003875</EPOSTID>
+							<EPOSTNAME>Менеджер</EPOSTNAME>
+						</item>
+					</EPOST>
+					<PARENT>
+						<item>
+							<VALUE>10283405</VALUE>
+							<DATEBEG>2018-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<IDOBJ>30731004</IDOBJ>
+						</item>
+					</PARENT>
+				</DYN_ATTR>
+			</item>]]]]>><![CDATA[</pws:message>
+               <!--Optional:-->
+               <pws:object type="String" mandatory=" " readonly=" ">dept</pws:object>
+               <!--Optional:-->
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href=" " contentId=" " action=" " name=" " type=" " len=" " charset=" " upload.by=" " upload.date=" " attachmentType=" "/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory=" " readonly=" " severity=" " module=" "> </com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:SetXMLSBAPI_FileParserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>int_sap_hr</con:username><con:password>654321</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="SetXML"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:SetXMLSBAPI_FileParserRequest attachmentInfo=" " attachmentData=" " ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query=" ">
+            <pws:keys query=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:id type="Decimal" mandatory=" " readonly=" "> </pws:id>
+            </pws:keys>
+            <pws:instance query=" " uniquequery=" " recordid=" " updatecounter=" ">
+               <!--Optional:-->
+           <pws:message type="String" mandatory=" " readonly=" "><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<item>
+				<DATEBEG>2018-01-01</DATEBEG>
+				<DATEEND>9999-12-31</DATEEND>
+				<IDOBJ>30731004</IDOBJ>
+				<OBJCODE>000000011111</OBJCODE>
+				<OBJFULLNAME>Менеджер</OBJFULLNAME>
+				<OBJNAME>Менеджер</OBJNAME>
+				<OBJTYPE>S</OBJTYPE>
+				<DYN_ATTR>
+					<EPOST>
+						<item>
+							<DATEBEG>2018-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<EPOSTCODE>000000011111</EPOSTCODE>
+							<EPOSTID>20000387</EPOSTID>
+							<EPOSTNAME>Менеджер</EPOSTNAME>
+						</item>
+						<item>
+							<DATEBEG>2019-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<EPOSTCODE>000000011111</EPOSTCODE>
+							<EPOSTID>200003875</EPOSTID>
+							<EPOSTNAME>Менеджер</EPOSTNAME>
+						</item>
+					</EPOST>
+					<PARENT>
+						<item>
+							<VALUE>10283405</VALUE>
+							<DATEBEG>2018-01-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<IDOBJ>30731004</IDOBJ>
+						</item>
+					</PARENT>
+				</DYN_ATTR>
+			</item>]]]]>><![CDATA[</pws:message>
+               <!--Optional:-->
+               <pws:object type="String" mandatory=" " readonly=" ">dept</pws:object>
+               <!--Optional:-->
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href=" " contentId=" " action=" " name=" " type=" " len=" " charset=" " upload.by=" " upload.date=" " attachmentType=" "/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory=" " readonly=" " severity=" " module=" "> </com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:SetXMLSBAPI_FileParserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>int_sap_hr</con:username><con:password>654321</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="SetXML"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:SetXMLSBAPI_FileParserRequest attachmentInfo=" " attachmentData=" " ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query=" ">
+            <pws:keys query=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:id type="Decimal" mandatory=" " readonly=" "> </pws:id>
+            </pws:keys>
+            <pws:instance query=" " uniquequery=" " recordid=" " updatecounter=" ">
+               <!--Optional:-->
+           <pws:message type="String" mandatory=" " readonly=" "><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<item>
+				<BECODE>9900</BECODE>
+				<BENAME>ЦА Сбербанк</BENAME>
+				<CHIEFPERSNUM>00447980</CHIEFPERSNUM>
+				<DATEBEG>2018-12-01</DATEBEG>
+				<DATEEND>9999-12-31</DATEEND>
+				<IDOBJ>10284973</IDOBJ>
+				<OBJCODE>Нов. ОргЕд</OBJCODE>
+				<OBJFULLNAME>Новое управление 5+ Сберджайл</OBJFULLNAME>
+				<OBJNAME>Новое управление 5+ Сберджайл</OBJNAME>
+				<OBJTYPE>O</OBJTYPE>
+				<ORGADDRESS>Москва г., аллея. 1 Маевки</ORGADDRESS>
+				<DYN_ATTR>
+					<PARENT>
+						<item>
+							<VALUE>10283652</VALUE>
+							<DATEBEG>2018-12-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<IDOBJ>10284973</IDOBJ>
+						</item>
+					</PARENT>
+				</DYN_ATTR>
+			</item>
+]]]]>><![CDATA[</pws:message>
+               <!--Optional:-->          
+               <pws:orgID type="String" mandatory=" " readonly="?">10268585</pws:orgID>
+               <pws:object type="String" mandatory=" " readonly=" ">dept</pws:object>
+               <!--Optional:-->
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href=" " contentId=" " action=" " name=" " type=" " len=" " charset=" " upload.by=" " upload.date=" " attachmentType=" "/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory=" " readonly=" " severity=" " module=" "> </com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:SetXMLSBAPI_FileParserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>int_irp</con:username><con:password>123456</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="SetXML"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:SetXMLSBAPI_FileParserRequest attachmentInfo=" " attachmentData=" " ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query=" ">
+            <pws:keys query=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:id type="Decimal" mandatory=" " readonly=" "> </pws:id>
+            </pws:keys>
+            <pws:instance query=" " uniquequery=" " recordid=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:orgID type="String" mandatory=" " readonly="?">10268585</pws:orgID>
+               <pws:object type="String" mandatory=" " readonly=" ">person</pws:object>
+               <!--Optional:-->
+              <pws:message type="String" mandatory="" readonly=""><![CDATA[
+ <item>
+				<FIO>Андреев Денис Русланович</FIO>
+				<GESCH>1</GESCH>
+				<HIRE_DATE>2019-03-01</HIRE_DATE>
+				<IDFIZLIC>01939125</IDFIZLIC>
+				<IDPERS>00443925</IDPERS>
+				<INTEROFFICEEMAIL>ANDREEVD@MAIL.RU</INTEROFFICEEMAIL>
+				<ISWORKING>3</ISWORKING>
+				<MIDNAME>Русланович</MIDNAME>
+				<NAME>Денис</NAME>
+				<ORGCODE>10283652</ORGCODE>
+				<ORGNAME>Горшков</ORGNAME>
+				<SURNAME>Андреев</SURNAME>
+				<SURNAMEIO>Андреев Д.Р.</SURNAMEIO>
+				<DYN_ATTR>
+					<ORG_FUNC_BLCK_S>
+						<item>
+							<DATEBEG>2019-03-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<VALUE>18</VALUE>
+						</item>
+					</ORG_FUNC_BLCK_S>
+					<PA0105>
+						<item>
+							<PERNR>00443925</PERNR>
+							<BEGDA>2019-03-01</BEGDA>
+							<ENDDA>9999-12-31</ENDDA>
+							<USRID_LONG>005056853F9D1EE9B1B209DAEB67619E</USRID_LONG>
+							<USRTY>GUID</USRTY>
+						</item>
+					</PA0105>
+					<PROCENT_ZANYAT_0001>
+						<item>
+							<DATEBEG>2019-03-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<IDOBJ>00443925</IDOBJ>
+							<VALUE>100.00</VALUE>
+						</item>
+					</PROCENT_ZANYAT_0001>
+					<SPLANSCODE>
+						<item>
+							<DATEBEG>2019-03-01</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<VALUE>34505052</VALUE>
+						</item>
+					</SPLANSCODE>
+					<SPLANSNAME>
+						<item>
+							<DATEBEG>2019-02-02</DATEBEG>
+							<DATEEND>9999-12-31</DATEEND>
+							<VALUE>Табельщик</VALUE>
+						</item>
+					</SPLANSNAME>
+				</DYN_ATTR>
+			</item>             
+]]]]>><![CDATA[</pws:message>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href=" " contentId=" " action=" " name=" " type=" " len=" " charset=" " upload.by=" " upload.date=" " attachmentType=" "/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory=" " readonly=" " severity=" " module=" "> </com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:SetXMLSBAPI_FileParserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>int_sap_hr</con:username><con:password>654321</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="SetXML"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 6"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-IPO-005.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:SetXMLSBAPI_FileParserRequest attachmentInfo=" " attachmentData=" " ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query=" ">
+            <pws:keys query=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:id type="String" mandatory=" " readonly=" "> </pws:id>
+            </pws:keys>
+            <pws:instance query=" " uniquequery=" " recordid=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:id type="String" mandatory=" " readonly=" ">3379973</pws:id>
+               <!--Optional:-->
+               <pws:object type="String" mandatory=" " readonly=" ">structure</pws:object>
+               <!--Optional:-->
+               <pws:orgID type="String" mandatory=" " readonly=" ">564645645465465465</pws:orgID>
+               <!--Optional:-->
+               <pws:message type="String" mandatory=" " readonly=" "> 123</pws:message>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href=" " contentId=" " action=" " name=" " type=" " len=" " charset=" " upload.by=" " upload.date=" " attachmentType=" "/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory=" " readonly=" " severity=" " module=" "> </com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:SetXMLSBAPI_FileParserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>int_sap_hr</con:username><con:password>654321</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="SetXML"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

@@ -1,0 +1,2421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="SBRequest IFT" resourceRoot="" soapui-version="5.0.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="SBAPI_SBRequest" type="wsdl" bindingName="{http://servicecenter.peregrine.com/PWS}SBAPI_SBRequest" soapVersion="1_1" anonymous="optional" definition="http://sbt-oaar-332.delta.sbrf.ru:13081/sc62server/PWS/SBAPI_SBRequest.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://sbt-oaar-332.delta.sbrf.ru:13081/sc62server/PWS/SBAPI_SBRequest.wsdl"><con:part><con:url>http://sbt-oaar-332.delta.sbrf.ru:13081/sc62server/PWS/SBAPI_SBRequest.wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://servicecenter.peregrine.com/PWS" xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/  http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:cmn="http://servicecenter.peregrine.com/PWS/Common" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://servicecenter.peregrine.com/PWS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://servicecenter.peregrine.com/PWS" version="2020-11-03 Rev 1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://servicecenter.peregrine.com/PWS">
+      <xs:import namespace="http://servicecenter.peregrine.com/PWS/Common" schemaLocation="http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/PWS/Common.xsd"/>
+      <xs:complexType name="SBAPI_SBRequestKeysType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="number" nillable="true" type="cmn:StringType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+        <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+      </xs:complexType>
+      <xs:complexType name="SBAPI_SBRequestInstanceType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="number" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="status" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="category" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="title" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="description" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="resolutionCode" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="resolution" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="openTime" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="interactionID" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="initiator" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="callbackContact" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="service" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="substatus" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="tplID" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="priority" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="planFinish" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="actualStart" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="actualFinish" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="closeTime" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="assignmentGroup" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="assignmentName" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="assignee" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="assigneeName" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="reassignCount" nillable="true" type="cmn:DecimalType"/>
+          <xs:element minOccurs="0" name="hpcAddInfo">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="cmn:ArrayType">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="hpcAddInfo" type="cmn:StringType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="options" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="hpcUpdateTime" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="device" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="slaBreach" nillable="true" type="cmn:BooleanType"/>
+          <xs:element minOccurs="0" name="nextBreach" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="approvers1">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="cmn:ArrayType">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="approvers1" type="cmn:StringType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="approvers2">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="cmn:ArrayType">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="approvers2" type="cmn:StringType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="approvers3">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="cmn:ArrayType">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="approvers3" type="cmn:StringType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="interactionTPLID" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="duration" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="deadlineBreachCause" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="sourceID" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="tstStatus" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="PosTerminals" nillable="true" type="cmn:DecimalType"/>
+          <xs:element minOccurs="0" name="tstName" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="tstTID" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="tstAddress" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="Vendor" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="login" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="password" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="sourceName" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="rqUid" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="sbAffectedItemCategory" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="isK2" nillable="true" type="cmn:BooleanType"/>
+          <xs:element minOccurs="0" name="sbOptions" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="approvalStrategy1" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="approvalStrategy2" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="approvalStrategy3" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="ecmfolderReadId" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="ecmfolderWriteId" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="EcmReadFileId" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="ecmfolderWriteId" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="attachments" nillable="true" type="cmn:AttachmentsType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+        <xs:attribute name="uniquequery" type="xs:string" use="optional"/>
+        <xs:attribute name="recordid" type="xs:string" use="optional"/>
+        <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+      </xs:complexType>
+      <xs:complexType name="SBAPI_SBRequestModelType">
+        <xs:sequence>
+          <xs:element name="keys" type="SBAPI_SBRequestKeysType"/>
+          <xs:element name="instance" type="SBAPI_SBRequestInstanceType"/>
+          <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+      </xs:complexType>
+      <xs:element name="RetrieveSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_SBRequestKeysListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_SBRequestKeysListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="SBAPI_SBRequestKeysType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_SBRequestListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="SBAPI_SBRequestKeysType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+          <xs:attribute name="attachmentType" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveSBAPI_SBRequestListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="instance" type="SBAPI_SBRequestInstanceType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompleteSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompleteSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StartWorkSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StartWorkSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ToDSSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ToDSSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CloseSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CloseSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ViewSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ViewSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CallBackSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CallBackSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReCallSBAPI_SBRequestRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReCallSBAPI_SBRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="SBAPI_SBRequestModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="RetrieveSBAPI_SBRequestRequest">
+    <part element="ns:RetrieveSBAPI_SBRequestRequest" name="RetrieveSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="RetrieveSBAPI_SBRequestResponse">
+    <part element="ns:RetrieveSBAPI_SBRequestResponse" name="RetrieveSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="RetrieveSBAPI_SBRequestKeysListRequest">
+    <part element="ns:RetrieveSBAPI_SBRequestKeysListRequest" name="RetrieveSBAPI_SBRequestKeysListRequest"/>
+  </message>
+  <message name="RetrieveSBAPI_SBRequestKeysListResponse">
+    <part element="ns:RetrieveSBAPI_SBRequestKeysListResponse" name="RetrieveSBAPI_SBRequestKeysListResponse"/>
+  </message>
+  <message name="RetrieveSBAPI_SBRequestListRequest">
+    <part element="ns:RetrieveSBAPI_SBRequestListRequest" name="RetrieveSBAPI_SBRequestListRequest"/>
+  </message>
+  <message name="RetrieveSBAPI_SBRequestListResponse">
+    <part element="ns:RetrieveSBAPI_SBRequestListResponse" name="RetrieveSBAPI_SBRequestListResponse"/>
+  </message>
+  <message name="CompleteSBAPI_SBRequestRequest">
+    <part element="ns:CompleteSBAPI_SBRequestRequest" name="CompleteSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="CompleteSBAPI_SBRequestResponse">
+    <part element="ns:CompleteSBAPI_SBRequestResponse" name="CompleteSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="UpdateSBAPI_SBRequestRequest">
+    <part element="ns:UpdateSBAPI_SBRequestRequest" name="UpdateSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="UpdateSBAPI_SBRequestResponse">
+    <part element="ns:UpdateSBAPI_SBRequestResponse" name="UpdateSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="StartWorkSBAPI_SBRequestRequest">
+    <part element="ns:StartWorkSBAPI_SBRequestRequest" name="StartWorkSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="StartWorkSBAPI_SBRequestResponse">
+    <part element="ns:StartWorkSBAPI_SBRequestResponse" name="StartWorkSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="ToDSSBAPI_SBRequestRequest">
+    <part element="ns:ToDSSBAPI_SBRequestRequest" name="ToDSSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="ToDSSBAPI_SBRequestResponse">
+    <part element="ns:ToDSSBAPI_SBRequestResponse" name="ToDSSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="CreateSBAPI_SBRequestRequest">
+    <part element="ns:CreateSBAPI_SBRequestRequest" name="CreateSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="CreateSBAPI_SBRequestResponse">
+    <part element="ns:CreateSBAPI_SBRequestResponse" name="CreateSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="CloseSBAPI_SBRequestRequest">
+    <part element="ns:CloseSBAPI_SBRequestRequest" name="CloseSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="CloseSBAPI_SBRequestResponse">
+    <part element="ns:CloseSBAPI_SBRequestResponse" name="CloseSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="ViewSBAPI_SBRequestRequest">
+    <part element="ns:ViewSBAPI_SBRequestRequest" name="ViewSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="ViewSBAPI_SBRequestResponse">
+    <part element="ns:ViewSBAPI_SBRequestResponse" name="ViewSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="CallBackSBAPI_SBRequestRequest">
+    <part element="ns:CallBackSBAPI_SBRequestRequest" name="CallBackSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="CallBackSBAPI_SBRequestResponse">
+    <part element="ns:CallBackSBAPI_SBRequestResponse" name="CallBackSBAPI_SBRequestResponse"/>
+  </message>
+  <message name="ReCallSBAPI_SBRequestRequest">
+    <part element="ns:ReCallSBAPI_SBRequestRequest" name="ReCallSBAPI_SBRequestRequest"/>
+  </message>
+  <message name="ReCallSBAPI_SBRequestResponse">
+    <part element="ns:ReCallSBAPI_SBRequestResponse" name="ReCallSBAPI_SBRequestResponse"/>
+  </message>
+  <portType name="SBAPI_SBRequest">
+    <operation name="RetrieveSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:RetrieveSBAPI_SBRequestRequest"/>
+      <output message="ns:RetrieveSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="RetrieveSBAPI_SBRequestKeysList">
+      <documentation/>
+      <input message="ns:RetrieveSBAPI_SBRequestKeysListRequest"/>
+      <output message="ns:RetrieveSBAPI_SBRequestKeysListResponse"/>
+    </operation>
+    <operation name="RetrieveSBAPI_SBRequestList">
+      <documentation/>
+      <input message="ns:RetrieveSBAPI_SBRequestListRequest"/>
+      <output message="ns:RetrieveSBAPI_SBRequestListResponse"/>
+    </operation>
+    <operation name="CompleteSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:CompleteSBAPI_SBRequestRequest"/>
+      <output message="ns:CompleteSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="UpdateSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:UpdateSBAPI_SBRequestRequest"/>
+      <output message="ns:UpdateSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="StartWorkSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:StartWorkSBAPI_SBRequestRequest"/>
+      <output message="ns:StartWorkSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="ToDSSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:ToDSSBAPI_SBRequestRequest"/>
+      <output message="ns:ToDSSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="CreateSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:CreateSBAPI_SBRequestRequest"/>
+      <output message="ns:CreateSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="CloseSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:CloseSBAPI_SBRequestRequest"/>
+      <output message="ns:CloseSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="ViewSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:ViewSBAPI_SBRequestRequest"/>
+      <output message="ns:ViewSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="CallBackSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:CallBackSBAPI_SBRequestRequest"/>
+      <output message="ns:CallBackSBAPI_SBRequestResponse"/>
+    </operation>
+    <operation name="ReCallSBAPI_SBRequest">
+      <documentation/>
+      <input message="ns:ReCallSBAPI_SBRequestRequest"/>
+      <output message="ns:ReCallSBAPI_SBRequestResponse"/>
+    </operation>
+  </portType>
+  <binding name="SBAPI_SBRequest" type="ns:SBAPI_SBRequest">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="RetrieveSBAPI_SBRequest">
+      <soap:operation soapAction="Retrieve" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="RetrieveSBAPI_SBRequestKeysList">
+      <soap:operation soapAction="RetrieveKeysList" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="RetrieveSBAPI_SBRequestList">
+      <soap:operation soapAction="RetrieveList" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CompleteSBAPI_SBRequest">
+      <soap:operation soapAction="Complete" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateSBAPI_SBRequest">
+      <soap:operation soapAction="Update" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="StartWorkSBAPI_SBRequest">
+      <soap:operation soapAction="StartWork" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ToDSSBAPI_SBRequest">
+      <soap:operation soapAction="ToDS" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateSBAPI_SBRequest">
+      <soap:operation soapAction="Create" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CloseSBAPI_SBRequest">
+      <soap:operation soapAction="Close" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ViewSBAPI_SBRequest">
+      <soap:operation soapAction="View" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CallBackSBAPI_SBRequest">
+      <soap:operation soapAction="CallBack" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ReCallSBAPI_SBRequest">
+      <soap:operation soapAction="ReCall" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="SBAPI_SBRequest">
+    <port binding="ns:SBAPI_SBRequest" name="SBAPI_SBRequest">
+      <soap:address location="http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/PWS/Common.xsd</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://servicecenter.peregrine.com/PWS/Common" version="2020-11-03 Rev 1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://servicecenter.peregrine.com/PWS/Common" xmlns:cmn="http://servicecenter.peregrine.com/PWS/Common">
+  <xs:complexType name="StringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute fixed="String" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DecimalType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute fixed="Decimal" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BooleanType">
+    <xs:simpleContent>
+      <xs:extension base="xs:boolean">
+        <xs:attribute fixed="Boolean" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:dateTime">
+        <xs:attribute fixed="DateTime" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:date">
+        <xs:attribute fixed="Date" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:time">
+        <xs:attribute fixed="Time" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DurationType">
+    <xs:simpleContent>
+      <xs:extension base="xs:duration">
+        <xs:attribute fixed="Duration" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="IntType">
+    <xs:simpleContent>
+      <xs:extension base="xs:int">
+        <xs:attribute fixed="Int" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ShortType">
+    <xs:simpleContent>
+      <xs:extension base="xs:short">
+        <xs:attribute fixed="Short" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LongType">
+    <xs:simpleContent>
+      <xs:extension base="xs:long">
+        <xs:attribute fixed="Long" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ByteType">
+    <xs:simpleContent>
+      <xs:extension base="xs:byte">
+        <xs:attribute fixed="Byte" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="FloatType">
+    <xs:simpleContent>
+      <xs:extension base="xs:float">
+        <xs:attribute fixed="Float" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DoubleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute fixed="Double" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Base64Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute fixed="Base64" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayType">
+    <xs:attribute fixed="Array" name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="StructureType">
+    <xs:attribute fixed="Structure" name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="AttachmentType">
+    <xs:attribute name="href" type="xs:string" use="optional"/>
+    <xs:attribute name="contentId" type="xs:string" use="optional"/>
+    <xs:attribute name="action" type="xs:string" use="optional"/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="len" type="xs:int" use="optional"/>
+    <xs:attribute name="charset" type="xs:string" use="optional"/>
+    <xs:attribute name="upload.by" type="xs:string" use="optional"/>
+    <xs:attribute name="upload.date" type="xs:string" use="optional"/>
+    <xs:attribute name="attachmentType" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="AttachmentsType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="AttachmentType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageType">
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute name="severity" type="xs:int" use="optional"/>
+        <xs:attribute name="module" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MessagesType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="message" type="MessageType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="FAILURE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint></con:endpoints><con:operation isOneWay="false" action="CallBack" name="CallBackSBAPI_SBRequest" bindingOperationName="CallBackSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:CallBackSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:CallBackSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="CallBack"/></con:call></con:operation><con:operation isOneWay="false" action="Close" name="CloseSBAPI_SBRequest" bindingOperationName="CloseSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:CloseSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:CloseSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="Close"/></con:call></con:operation><con:operation isOneWay="false" action="Complete" name="CompleteSBAPI_SBRequest" bindingOperationName="CompleteSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:CompleteSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:CompleteSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="Complete"/></con:call></con:operation><con:operation isOneWay="false" action="Create" name="CreateSBAPI_SBRequest" bindingOperationName="CreateSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:CreateSBAPI_SBRequestRequest attachmentInfo=" " attachmentData=" " ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query=" ">
+            <pws:keys query=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:number type="String" mandatory=" " readonly=" "> </pws:number>
+            </pws:keys>
+            <pws:instance query=" " uniquequery=" " recordid=" " updatecounter=" ">
+               <!--Optional:-->
+               <pws:number type="String" mandatory=" " readonly=" "> </pws:number>
+               <!--Optional:-->
+               <pws:title type="String" mandatory=" " readonly=" ">Предоставление удаленного доступа к АРМ</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory=" " readonly=" ">Предоставление удаленного доступа к АРМ</pws:description>
+               <!--Optional:-->
+               <pws:service type="String" mandatory=" " readonly=" ">CI00595843</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory=" " readonly=" "> </pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory=" " readonly=" ">10000001</pws:tplID>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory=" " readonly=" ">ЦИ ОТИДЦ Оборудование WiFi/VPN (00015796)</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory=" " readonly=" ">true</pws:isK2>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href=" " contentId=" " action=" " name=" " type=" " len=" " charset=" " upload.by=" " upload.date=" " attachmentType=" "/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory=" " readonly=" " severity=" " module=" "> </com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:CreateSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>rpa_fl09_002</con:username><con:password>123456</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="Create"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="ReCall" name="ReCallSBAPI_SBRequest" bindingOperationName="ReCallSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:ReCallSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:ReCallSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ReCall"/></con:call></con:operation><con:operation isOneWay="false" action="Retrieve" name="RetrieveSBAPI_SBRequest" bindingOperationName="RetrieveSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:RetrieveSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:RetrieveSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="Retrieve"/></con:call></con:operation><con:operation isOneWay="false" action="RetrieveKeysList" name="RetrieveSBAPI_SBRequestKeysList" bindingOperationName="RetrieveSBAPI_SBRequestKeysList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:RetrieveSBAPI_SBRequestKeysListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:RetrieveSBAPI_SBRequestKeysListRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="RetrieveKeysList"/></con:call></con:operation><con:operation isOneWay="false" action="RetrieveList" name="RetrieveSBAPI_SBRequestList" bindingOperationName="RetrieveSBAPI_SBRequestList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:RetrieveSBAPI_SBRequestListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?" attachmentType="?">
+         <!--1 or more repetitions:-->
+         <pws:keys query="?" updatecounter="?">
+            <!--Optional:-->
+            <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+         </pws:keys>
+      </pws:RetrieveSBAPI_SBRequestListRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="RetrieveList"/></con:call></con:operation><con:operation isOneWay="false" action="StartWork" name="StartWorkSBAPI_SBRequest" bindingOperationName="StartWorkSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:StartWorkSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:StartWorkSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="StartWork"/></con:call></con:operation><con:operation isOneWay="false" action="ToDS" name="ToDSSBAPI_SBRequest" bindingOperationName="ToDSSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:ToDSSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:ToDSSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ToDS"/></con:call></con:operation><con:operation isOneWay="false" action="Update" name="UpdateSBAPI_SBRequest" bindingOperationName="UpdateSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:UpdateSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:UpdateSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="Update"/></con:call></con:operation><con:operation isOneWay="false" action="View" name="ViewSBAPI_SBRequest" bindingOperationName="ViewSBAPI_SBRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SBT-OAAR-332.delta.sbrf.ru:13081/sc62server/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pws="http://servicecenter.peregrine.com/PWS" xmlns:com="http://servicecenter.peregrine.com/PWS/Common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pws:ViewSBAPI_SBRequestRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">
+         <pws:model query="?">
+            <pws:keys query="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+            </pws:keys>
+            <pws:instance query="?" uniquequery="?" recordid="?" updatecounter="?">
+               <!--Optional:-->
+               <pws:number type="String" mandatory="?" readonly="?">?</pws:number>
+               <!--Optional:-->
+               <pws:status type="String" mandatory="?" readonly="?">?</pws:status>
+               <!--Optional:-->
+               <pws:category type="String" mandatory="?" readonly="?">?</pws:category>
+               <!--Optional:-->
+               <pws:title type="String" mandatory="?" readonly="?">?</pws:title>
+               <!--Optional:-->
+               <pws:description type="String" mandatory="?" readonly="?">?</pws:description>
+               <!--Optional:-->
+               <pws:resolutionCode type="String" mandatory="?" readonly="?">?</pws:resolutionCode>
+               <!--Optional:-->
+               <pws:resolution type="String" mandatory="?" readonly="?">?</pws:resolution>
+               <!--Optional:-->
+               <pws:openTime type="DateTime" mandatory="?" readonly="?">?</pws:openTime>
+               <!--Optional:-->
+               <pws:interactionID type="String" mandatory="?" readonly="?">?</pws:interactionID>
+               <!--Optional:-->
+               <pws:initiator type="String" mandatory="?" readonly="?">?</pws:initiator>
+               <!--Optional:-->
+               <pws:callbackContact type="String" mandatory="?" readonly="?">?</pws:callbackContact>
+               <!--Optional:-->
+               <pws:service type="String" mandatory="?" readonly="?">?</pws:service>
+               <!--Optional:-->
+               <pws:substatus type="String" mandatory="?" readonly="?">?</pws:substatus>
+               <!--Optional:-->
+               <pws:tplID type="String" mandatory="?" readonly="?">?</pws:tplID>
+               <!--Optional:-->
+               <pws:priority type="String" mandatory="?" readonly="?">?</pws:priority>
+               <!--Optional:-->
+               <pws:planFinish type="DateTime" mandatory="?" readonly="?">?</pws:planFinish>
+               <!--Optional:-->
+               <pws:actualStart type="DateTime" mandatory="?" readonly="?">?</pws:actualStart>
+               <!--Optional:-->
+               <pws:actualFinish type="DateTime" mandatory="?" readonly="?">?</pws:actualFinish>
+               <!--Optional:-->
+               <pws:closeTime type="DateTime" mandatory="?" readonly="?">?</pws:closeTime>
+               <!--Optional:-->
+               <pws:assignmentGroup type="String" mandatory="?" readonly="?">?</pws:assignmentGroup>
+               <!--Optional:-->
+               <pws:assignmentName type="String" mandatory="?" readonly="?">?</pws:assignmentName>
+               <!--Optional:-->
+               <pws:assignee type="String" mandatory="?" readonly="?">?</pws:assignee>
+               <!--Optional:-->
+               <pws:assigneeName type="String" mandatory="?" readonly="?">?</pws:assigneeName>
+               <!--Optional:-->
+               <pws:reassignCount type="Decimal" mandatory="?" readonly="?">?</pws:reassignCount>
+               <!--Optional:-->
+               <pws:hpcAddInfo type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:hpcAddInfo type="String" mandatory="?" readonly="?">?</pws:hpcAddInfo>
+               </pws:hpcAddInfo>
+               <!--Optional:-->
+               <pws:options type="String" mandatory="?" readonly="?">?</pws:options>
+               <!--Optional:-->
+               <pws:hpcUpdateTime type="DateTime" mandatory="?" readonly="?">?</pws:hpcUpdateTime>
+               <!--Optional:-->
+               <pws:device type="String" mandatory="?" readonly="?">?</pws:device>
+               <!--Optional:-->
+               <pws:slaBreach type="Boolean" mandatory="?" readonly="?">?</pws:slaBreach>
+               <!--Optional:-->
+               <pws:nextBreach type="DateTime" mandatory="?" readonly="?">?</pws:nextBreach>
+               <!--Optional:-->
+               <pws:approvers1 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers1 type="String" mandatory="?" readonly="?">?</pws:approvers1>
+               </pws:approvers1>
+               <!--Optional:-->
+               <pws:approvers2 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers2 type="String" mandatory="?" readonly="?">?</pws:approvers2>
+               </pws:approvers2>
+               <!--Optional:-->
+               <pws:approvers3 type="Array">
+                  <!--Zero or more repetitions:-->
+                  <pws:approvers3 type="String" mandatory="?" readonly="?">?</pws:approvers3>
+               </pws:approvers3>
+               <!--Optional:-->
+               <pws:interactionTPLID type="String" mandatory="?" readonly="?">?</pws:interactionTPLID>
+               <!--Optional:-->
+               <pws:duration type="DateTime" mandatory="?" readonly="?">?</pws:duration>
+               <!--Optional:-->
+               <pws:deadlineBreachCause type="String" mandatory="?" readonly="?">?</pws:deadlineBreachCause>
+               <!--Optional:-->
+               <pws:sourceID type="String" mandatory="?" readonly="?">?</pws:sourceID>
+               <!--Optional:-->
+               <pws:tstStatus type="String" mandatory="?" readonly="?">?</pws:tstStatus>
+               <!--Optional:-->
+               <pws:PosTerminals type="Decimal" mandatory="?" readonly="?">?</pws:PosTerminals>
+               <!--Optional:-->
+               <pws:tstName type="String" mandatory="?" readonly="?">?</pws:tstName>
+               <!--Optional:-->
+               <pws:tstTID type="String" mandatory="?" readonly="?">?</pws:tstTID>
+               <!--Optional:-->
+               <pws:tstAddress type="String" mandatory="?" readonly="?">?</pws:tstAddress>
+               <!--Optional:-->
+               <pws:Vendor type="String" mandatory="?" readonly="?">?</pws:Vendor>
+               <!--Optional:-->
+               <pws:login type="String" mandatory="?" readonly="?">?</pws:login>
+               <!--Optional:-->
+               <pws:password type="String" mandatory="?" readonly="?">?</pws:password>
+               <!--Optional:-->
+               <pws:sourceName type="String" mandatory="?" readonly="?">?</pws:sourceName>
+               <!--Optional:-->
+               <pws:rqUid type="String" mandatory="?" readonly="?">?</pws:rqUid>
+               <!--Optional:-->
+               <pws:sbAffectedItemCategory type="String" mandatory="?" readonly="?">?</pws:sbAffectedItemCategory>
+               <!--Optional:-->
+               <pws:isK2 type="Boolean" mandatory="?" readonly="?">?</pws:isK2>
+               <!--Optional:-->
+               <pws:sbOptions type="String" mandatory="?" readonly="?">?</pws:sbOptions>
+               <!--Optional:-->
+               <pws:approvalStrategy1 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy1>
+               <!--Optional:-->
+               <pws:approvalStrategy2 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy2>
+               <!--Optional:-->
+               <pws:approvalStrategy3 type="String" mandatory="?" readonly="?">?</pws:approvalStrategy3>
+               <!--Optional:-->
+               <pws:ecmfolderReadId type="String" mandatory="?" readonly="?">?</pws:ecmfolderReadId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:EcmReadFileId type="String" mandatory="?" readonly="?">?</pws:EcmReadFileId>
+               <!--Optional:-->
+               <pws:ecmfolderWriteId type="String" mandatory="?" readonly="?">?</pws:ecmfolderWriteId>
+               <!--Optional:-->
+               <pws:attachments>
+                  <!--Zero or more repetitions:-->
+                  <com:attachment href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?"/>
+               </pws:attachments>
+            </pws:instance>
+            <!--Optional:-->
+            <pws:messages>
+               <!--Zero or more repetitions:-->
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>
+            </pws:messages>
+         </pws:model>
+      </pws:ViewSBAPI_SBRequestRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="View"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
