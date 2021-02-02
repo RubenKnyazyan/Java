@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 22
+/svn/!svn/ver/75/trunk
+END
+CHANGELOG.txt
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/68/trunk/CHANGELOG.txt
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/59/trunk/pom.xml
+END
+nbactions.xml
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/42/trunk/nbactions.xml
+END

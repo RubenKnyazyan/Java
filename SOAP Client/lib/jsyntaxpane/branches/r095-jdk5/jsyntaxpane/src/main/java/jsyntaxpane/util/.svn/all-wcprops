@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/src/main/java/jsyntaxpane/util
+END
+ReflectUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/src/main/java/jsyntaxpane/util/ReflectUtils.java
+END
+Configuration.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/src/main/java/jsyntaxpane/util/Configuration.java
+END
+SwingUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/src/main/java/jsyntaxpane/util/SwingUtils.java
+END
+JarServiceProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/src/main/java/jsyntaxpane/util/JarServiceProvider.java
+END

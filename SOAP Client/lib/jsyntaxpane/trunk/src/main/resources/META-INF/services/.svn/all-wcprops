@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/68/trunk/src/main/resources/META-INF/services
+END
+jsyntaxpane.config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/65/trunk/src/main/resources/META-INF/services/jsyntaxpane.config.properties
+END
+jsyntaxpane.kitsfortypes.properties
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/68/trunk/src/main/resources/META-INF/services/jsyntaxpane.kitsfortypes.properties
+END
+jsyntaxpane.syntaxstyles.properties
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/50/trunk/src/main/resources/META-INF/services/jsyntaxpane.syntaxstyles.properties
+END
+jsyntaxpane.javasyntaxkit.completions.properties
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/44/trunk/src/main/resources/META-INF/services/jsyntaxpane.javasyntaxkit.completions.properties
+END
+jsyntaxpane.groovysyntaxkit.completions.properties
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/47/trunk/src/main/resources/META-INF/services/jsyntaxpane.groovysyntaxkit.completions.properties
+END

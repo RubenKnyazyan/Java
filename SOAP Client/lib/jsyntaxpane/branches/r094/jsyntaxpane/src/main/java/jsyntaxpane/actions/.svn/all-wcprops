@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions
+END
+MapCompletionAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/MapCompletionAction.java
+END
+CaretMonitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/CaretMonitor.java
+END
+SmartIndent.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/SmartIndent.java
+END
+ReplaceDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/ReplaceDialog.java
+END
+FindReplaceActions.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/FindReplaceActions.java
+END
+ReplaceDialog.form
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/ReplaceDialog.form
+END
+ActionUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/ActionUtils.java
+END
+IndentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/IndentAction.java
+END
+JavaIndentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/JavaIndentAction.java
+END
+UnindentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/actions/UnindentAction.java
+END

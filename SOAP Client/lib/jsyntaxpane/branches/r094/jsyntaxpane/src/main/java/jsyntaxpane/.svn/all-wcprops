@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane
+END
+SyntaxTester.form
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/SyntaxTester.form
+END
+Lexer.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/Lexer.java
+END
+Token.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/Token.java
+END
+SyntaxView.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/SyntaxView.java
+END
+TokenType.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/TokenType.java
+END
+DefaultSyntaxKit.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/DefaultSyntaxKit.java
+END
+DefaultLexer.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/DefaultLexer.java
+END
+CompoundUndoManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/CompoundUndoManager.java
+END
+SyntaxDocument.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/SyntaxDocument.java
+END
+SyntaxStyle.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/SyntaxStyle.java
+END
+SyntaxStyles.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/SyntaxStyles.java
+END
+SyntaxTester.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/58/branches/r094/jsyntaxpane/src/main/java/jsyntaxpane/SyntaxTester.java
+END

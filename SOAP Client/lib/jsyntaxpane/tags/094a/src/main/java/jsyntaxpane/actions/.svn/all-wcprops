@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions
+END
+ReplaceDialog.form
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/ReplaceDialog.form
+END
+GotoLineAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/GotoLineAction.java
+END
+IndentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/IndentAction.java
+END
+JavaIndentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/JavaIndentAction.java
+END
+GotoLineDialog.form
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/GotoLineDialog.form
+END
+UnindentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/UnindentAction.java
+END
+SyntaxAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/SyntaxAction.java
+END
+RedoAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/RedoAction.java
+END
+SmartIndent.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/SmartIndent.java
+END
+PairAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/PairAction.java
+END
+JIndentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/JIndentAction.java
+END
+ReplaceDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/ReplaceDialog.java
+END
+DeleteLinesAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/DeleteLinesAction.java
+END
+JUnindentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/JUnindentAction.java
+END
+FindReplaceActions.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/FindReplaceActions.java
+END
+ActionUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/ActionUtils.java
+END
+GotoLineDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/GotoLineDialog.java
+END
+UndoAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/UndoAction.java
+END
+DuplicateLinesAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/DuplicateLinesAction.java
+END
+MapCompletionAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/MapCompletionAction.java
+END
+CaretMonitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/61/tags/094a/src/main/java/jsyntaxpane/actions/CaretMonitor.java
+END
