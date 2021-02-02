@@ -1,10 +1,14 @@
 package soapclient.form.main;
 
+import org.springframework.context.annotation.Import;
+import soapclient.form.request.SoapRequestForm;
 import soapclient.host.HostList;
 import soapclient.parser.SchemeField;
 import soapclient.parser.SchemeParser;
+import soapclient.project.ImportSOAPUI;
 import soapclient.project.SaveProject;
 import soapclient.soap.Auth;
+import soapclient.soap.ResponseSOAPMessage;
 import soapclient.soap.SOAPRequest;
 import soapclient.soap.SoapApacheHttpClient;
 import soapclient.swingutils.FormHelper;
@@ -23,6 +27,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainForm extends JFrame {
 
@@ -34,13 +40,14 @@ public class MainForm extends JFrame {
     private SoapApacheHttpClient soapClientHTTP;
     private JPanel mainGUIPanel;
     private JPanel schemePanel;
-    private XmlTextPane xmlTextPane;
+    private static XmlTextPane xmlTextPane;
     private SOAPRequest request;
-    private String method;
+    private static String method;
     private HostList hostList;
     private JMenu status;
     private SaveProject saveProject;
     private JComboBox list_hosts;
+    private ImportSOAPUI soapUI;
 
     public MainForm() {
         super("SOAP Client");
@@ -60,6 +67,8 @@ public class MainForm extends JFrame {
         this.request = new SOAPRequest();
         //вычитываем хосты из файла
         this.hostList= new HostList();
+        //класс для загрузки проектов из приложения SOAP UI
+        this.soapUI = new ImportSOAPUI();
         //file opener inicialization
         this.fileChooser = FormHelper.createFileChooser();
         //создаем еще panel - разобьем на 2 части
@@ -138,6 +147,10 @@ public class MainForm extends JFrame {
 
         JMenu myMenu = new JMenu("Проект");
 
+        JMenuItem itemSOAPUI = new JMenuItem("Импорт проекта SOAP UI");
+        itemSOAPUI.setName("soapui");
+        itemSOAPUI.addActionListener(new MainFormAction(itemSOAPUI));
+
         JMenuItem itemHosts = new JMenuItem("Обновить список хостов");
         itemHosts.setName("hosts");
         itemHosts.addActionListener(new MainFormAction(itemHosts));
@@ -150,13 +163,19 @@ public class MainForm extends JFrame {
         itemLoadRequest.setName("load_request");
         itemLoadRequest.addActionListener(new MainFormAction(itemLoadRequest));
 
+        myMenu.add(itemSOAPUI);
         myMenu.add(itemHosts);
         myMenu.add(itemSaveRequest);
         myMenu.add(itemLoadRequest);
 
         return myMenu;
     }
-    private JPanel setMethods() {
+
+    public static void ImportRequest(String request) {
+
+        xmlTextPane.setText(request);
+    }
+    private JPanel setMethods(SchemeParser schemeParser) {
 
         JPanel method = new JPanel(new GridLayout(2,2,10,10));
         JLabel label_methods = new JLabel("Метод");
@@ -164,8 +183,8 @@ public class MainForm extends JFrame {
 //        JPanel host = new JPanel(new GridLayout(1,2,10,10));
         JLabel label_host = new JLabel("Хост");
 
-        if (this.parser.getMethods().size() > 0 && this.parser.getActions().size() > 0) {
-            JComboBox list_methods = new JComboBox(this.parser.getMethods().toArray());
+        if (schemeParser.getMethods().size() > 0 && schemeParser.getActions().size() > 0) {
+            JComboBox list_methods = new JComboBox(schemeParser.getMethods().toArray());
             list_methods.setName("methods");
             if (!list_methods.getItemAt(0).toString().equals("") && list_methods.getItemAt(0) != null) {
 
@@ -201,10 +220,10 @@ public class MainForm extends JFrame {
         panel.validate();
         panel.repaint();
     }
-    private void setFieldsPanel() throws ParseException {
+    private void setFieldsPanel(SchemeParser schemeParser) throws ParseException {
 
-        if (this.parser.getFields().size() > 0) {
-            ArrayList<SchemeField> fieldList = this.parser.getFields();
+        if (schemeParser.getFields().size() > 0) {
+            ArrayList<SchemeField> fieldList = schemeParser.getFields();
 
             JPanel panelFields = new JPanel(new GridLayout(fieldList.size(), 2, 10, 10));
             JScrollPane scrollPane = new JScrollPane(panelFields);
@@ -292,7 +311,7 @@ public class MainForm extends JFrame {
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
             scrollPane.setBounds(20, 80, this.FIELD_PANEL_WIDTH, 460);
             this.schemePanel.add(scrollPane);
-            JPanel methods = this.setMethods();
+            JPanel methods = this.setMethods(schemeParser);
             methods.setBounds(20, 10, this.FIELD_PANEL_WIDTH, 60);
             this.schemePanel.add(methods);
         }
@@ -366,6 +385,10 @@ public class MainForm extends JFrame {
             System.out.println("Login canceled");
         }
     }
+    public static void importMethod(String importMethod) {
+
+        method = importMethod;
+    }
     private void saveRequest() {
 
         try {
@@ -396,7 +419,7 @@ public class MainForm extends JFrame {
         }
         catch(Exception ex) {
 
-            if (!ex.getMessage().equals("")) {
+            if (ex.getMessage() != null) {
 
                 JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
 //                System.out.println(ex.getMessage());
@@ -420,7 +443,7 @@ public class MainForm extends JFrame {
                         //clear main form GUI panel
                         this.schemePanel.removeAll();
                         //cоздает список полей
-                        this.setFieldsPanel();
+                        this.setFieldsPanel(this.parser);
                         //redraw GUI main Panel
                         this.redrawPanel(this.schemePanel);
                     } else {
@@ -431,7 +454,7 @@ public class MainForm extends JFrame {
                     throw new Exception("Ошибка при получении схемы - проверьте адрес" );
             }
             catch (Exception ex) {
-                if (!ex.getMessage().equals("")) {
+                if (ex.getMessage() != null ) {
 
                     JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
 //                System.out.println(ex.getMessage());
@@ -449,49 +472,90 @@ public class MainForm extends JFrame {
 
             try {
                 inputFile = fileChooser.getSelectedFile();
-                if (this.parser.initParser(inputFile) ) {
-                    switch (action) {
-                        case "scheme":
+                switch (action) {
+                    case "scheme":
+                        if (this.parser.initParser(inputFile) ) {
                             if (this.parser.startParse()) {
                                 //clear main form GUI panel
                                 this.schemePanel.removeAll();
                                 //cоздает список полей
-                                this.setFieldsPanel();
+                                this.setFieldsPanel(this.parser);
                                 //redraw GUI main Panel
                                 this.redrawPanel(this.schemePanel);
-                            }
-                            else
+                            } else
                                 throw new Exception("Ошибка при разборе файла - не удалось распарсить");
-                            break;
-                        case "load_request":
+                        }
+                        else
+                            throw new Exception("Ошибка при получении чтении файла");
+                        break;
+                    case "load_request":
+                        if (this.parser.initParser(inputFile) ) {
                             if (this.parser.loadProject()) {
                                 //clear main form GUI panel
                                 this.schemePanel.removeAll();
                                 //cоздает список полей
-                                this.setFieldsPanel();
+                                this.setFieldsPanel(this.parser);
                                 //redraw GUI main Panel
                                 this.redrawPanel(this.schemePanel);
                             }
                             else
                                 throw new Exception("Ошибка при загрузке сохраненного проекта - не удалось распарсить");
-                            break;
-                    }
+                        }
+                        else
+                            throw new Exception("Ошибка при получении чтении файла");
+                        break;
+                    case "soapui":
+                        if (this.soapUI.initParser(inputFile)) {
 
+                            if (this.soapUI.startImport()) {
+
+                                //clear main form GUI panel
+                                this.schemePanel.removeAll();
+                                //cоздает список полей
+                                this.setFieldsPanel(this.soapUI);
+                                //redraw GUI main Panel
+                                this.redrawPanel(this.schemePanel);
+                                //присвоим парсеру методы и поля
+                                this.parser.setFields(this.soapUI.getFields());
+                                this.parser.setMethods(this.soapUI.getMethods());
+                                this.parser.setActions(this.soapUI.getActions());
+                                //открываем сохраненные запросы
+                                this.openRequestsWindows(this.soapUI.getRequests());
+                                //даем возможность редактировать окно запроса
+                                this.xmlTextPane.setEditable(true);
+
+                            }
+                            else
+                                throw new Exception("Не удалось импортировать проект  - не удалось распарсить");
+                        }
+                        else
+                            throw new Exception("Ошибка при получении чтении файла");
+                        break;
                 }
-                else
-                    throw new Exception("Ошибка при получении чтении файла");
             }
             catch (Exception ex) {
-//                ex.printStackTrace();
-                if (!ex.getMessage().equals("")) {
+
+                if (ex.getMessage() != null) {
 
                     JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
-
                 }
             }
         }
     }
 
+    private void openRequestsWindows(HashMap map) {
+
+        map.forEach((key, value) -> {
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    new SoapRequestForm(key.toString(), value.toString());
+                }
+            });
+
+        });
+    }
     private void selectedMethod(JComboBox item) {
 
         this.method = item.getSelectedItem().toString();
@@ -509,14 +573,13 @@ public class MainForm extends JFrame {
     private void createMessage() {
 
         try {
-            if (this.parser.getFields().size() > 0) {
+            if (this.parser.getFields().size() > 0 ) {
                 if (this.method != null && !this.method.equals("")) {
                     // create jeditorpane
                     this.xmlTextPane.setEditable(true);
                     String message = this.request.generateMessage(this.method);
                     if (message != null && !message.equals("")) {
 
-                        System.out.println(1);
                         this.xmlTextPane.setText(message);
                         this.redrawPanel(this.mainGUIPanel);
                     } else
@@ -529,7 +592,7 @@ public class MainForm extends JFrame {
         }
         catch (Exception ex) {
 
-            if (!ex.getMessage().equals("")) {
+            if (ex.getMessage() != null) {
 
                 JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
 //                System.out.println(ex.getMessage());
@@ -540,9 +603,27 @@ public class MainForm extends JFrame {
     private void sendRequest() {
 
         try {
-           this.xmlTextPane.setText( String.valueOf((this.soapClientHTTP.sendPOST(this.xmlTextPane.getText(), this.parser.getActionByMethod(this.method)))));
-        }
+           if (this.autorization.getLogin() != null && this.autorization.getPassword() != null) {
+               if (this.autorization.getHost() != null) {
+
+                   ResponseSOAPMessage responseSOAPMessage = this.soapClientHTTP.sendPOST(this.xmlTextPane.getText(), this.parser.getActionByMethod(this.method));
+                   this.xmlTextPane.setText(String.valueOf((responseSOAPMessage)));
+
+//                   JOptionPane.showMessageDialog(null, responseSOAPMessage.getStatusCode() ,"Реультат запроса", JOptionPane.INFORMATION_MESSAGE);
+               }
+               else
+                   throw new IOException("Не выбран хост");
+           }
+            else
+                throw new IOException("Не авторизованы - укажите логин и пароль");
+       }
         catch (IOException ex) {
+
+            if (ex.getMessage() != null) {
+
+                JOptionPane.showMessageDialog(null,  ex.getMessage(),"Упс", JOptionPane.ERROR_MESSAGE);
+//                System.out.println(ex.getMessage());
+            }
             ex.printStackTrace();
         }
     }
@@ -592,6 +673,9 @@ public class MainForm extends JFrame {
                         break;
                     case "load_request":
                         showFileChooser("load_request");
+                        break;
+                    case "soapui":
+                        showFileChooser("soapui");
                         break;
                 }
             }

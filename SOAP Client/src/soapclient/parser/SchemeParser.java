@@ -19,12 +19,12 @@ import java.util.HashMap;
 
 public class SchemeParser {
 
-    private DocumentBuilder builder;
-    private Document document;
+    protected DocumentBuilder builder;
+    protected Document document;
     private URL schemeURL;
-    private ArrayList<SchemeField> fields;
-    private ArrayList<String> methods;
-    private HashMap<String, String> actions ;
+    protected ArrayList<SchemeField> fields;
+    protected ArrayList<String> methods;
+    protected HashMap<String, String> actions ;
 
     public HashMap<String, String> getActions() {
         return actions;
@@ -126,6 +126,19 @@ public class SchemeParser {
         }
 
     }
+
+    public void setFields(ArrayList<SchemeField> fields) {
+        this.fields = fields;
+    }
+
+    public void setMethods(ArrayList<String> methods) {
+        this.methods = methods;
+    }
+
+    public void setActions(HashMap<String, String> actions) {
+        this.actions = actions;
+    }
+
     public boolean startParse() {
 
         Boolean result = false;
@@ -173,7 +186,7 @@ public class SchemeParser {
         else
             return "";
     }
-    private void parseSOAPActions(Node element) {
+    protected void parseSOAPActions(Node element) {
 
         try {
 
@@ -198,7 +211,7 @@ public class SchemeParser {
         }
     }
 
-    private String getAction(Node element) {
+    protected String getAction(Node element) {
 
         String action = "";
         try {
@@ -322,7 +335,7 @@ public class SchemeParser {
             }
         }
     }
-    private void parseMethods(Node element) {
+    protected void parseMethods(Node element) {
 
         try {
 
@@ -342,7 +355,7 @@ public class SchemeParser {
         }
     }
 
-    private void getFields(Node element) {
+    protected void getFields(Node element) {
 
         try {
 
@@ -381,7 +394,7 @@ public class SchemeParser {
         }
 
     }
-    private void parseFields(Node parent, Boolean isKey, String table) {
+    protected void parseFields(Node parent, Boolean isKey, String table) {
 
         try {
 
@@ -433,7 +446,7 @@ public class SchemeParser {
         }
     }
 
-    private void addFieldToArray(String field, String type, Boolean isArray, Boolean isKey, String table) {
+    protected void addFieldToArray(String field, String type, Boolean isArray, Boolean isKey, String table) {
 
         String fieldType = "";
         if (type != "" && type != null)
@@ -444,7 +457,7 @@ public class SchemeParser {
         this.fields.add(schemeField);
     }
 
-    private String getArrayField(Node element) {
+    protected String getArrayField(Node element) {
         String Type = "";
         if (element != null) {
             if (element.getChildNodes().getLength() > 0) {
