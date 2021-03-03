@@ -1,2 +1,0 @@
-Action.TOGGLE_COMMENTS = jsyntaxpane.actions.ToggleCommentsAction, control NUMBER_SIGN
-Action.TOGGLE_COMMENTS.LineComments = "# "

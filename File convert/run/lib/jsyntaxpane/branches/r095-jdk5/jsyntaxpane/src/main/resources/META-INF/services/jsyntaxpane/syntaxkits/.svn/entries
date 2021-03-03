@@ -1,73 +1,0 @@
-10
-
-dir
-156
-http://jsyntaxpane.googlecode.com/svn/branches/r095-jdk5/jsyntaxpane/src/main/resources/META-INF/services/jsyntaxpane/syntaxkits
-http://jsyntaxpane.googlecode.com/svn
-
-
-
-2009-02-18T08:41:52.488176Z
-87
-ayman.alsairafi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-601763da-ef4f-0410-b808-51908e403db0
-
-bashsyntaxkit
-dir
-
-talsyntaxkit
-dir
-
-rubysyntaxkit
-dir
-
-javasyntaxkit
-dir
-
-pythonsyntaxkit
-dir
-
-scalasyntaxkit
-dir
-
-xpathsyntaxkit
-dir
-
-groovysyntaxkit
-dir
-
-dosbatchsyntaxkit
-dir
-
-propertiessyntaxkit
-dir
-
-xhtmlsyntaxkit
-dir
-
-sqlsyntaxkit
-dir
-
-xmlsyntaxkit
-dir
-
-clojuresyntaxkit
-dir
-
-javascriptsyntaxkit
-dir
-
