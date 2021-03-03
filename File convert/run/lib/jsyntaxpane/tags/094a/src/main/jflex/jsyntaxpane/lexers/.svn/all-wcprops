@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers
+END
+properties.flex
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/properties.flex
+END
+sql.flex
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/sql.flex
+END
+tal.flex
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/tal.flex
+END
+xml.flex
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/xml.flex
+END
+ruby.flex
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/ruby.flex
+END
+python.flex
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/python.flex
+END
+java.flex
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/java.flex
+END
+c.flex
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/c.flex
+END
+cpp.flex
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/cpp.flex
+END
+groovy.flex
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/groovy.flex
+END
+javascript.flex
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/javascript.flex
+END
+jflex.flex
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/61/tags/094a/src/main/jflex/jsyntaxpane/lexers/jflex.flex
+END

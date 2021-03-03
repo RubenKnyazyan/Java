@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/148/branches/r095-jdk5/jsyntaxpane
+END
+CHANGELOG.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/CHANGELOG.txt
+END
+javaRegex.properties
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/javaRegex.properties
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/pom.xml
+END
+nbactions.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/87/branches/r095-jdk5/jsyntaxpane/nbactions.xml
+END

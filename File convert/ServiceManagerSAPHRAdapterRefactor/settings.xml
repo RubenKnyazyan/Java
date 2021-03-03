@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SMSAPHRAdapter>
+	<Path>D:\Disk_D\ServiceManager\Server\SAP\</Path>
+	<USER_SMIT>
+		<UserSM maxIteration="1000">int_sap_hr</UserSM>
+		<PasswordSM encodeHex="f">00000000</PasswordSM>
+		<Host>http://tv-sm-12r2-010:13100/sc62server/ws</Host>
+	</USER_SMIT>
+	<ET_ORG>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-010:13100/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-010:13101/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-010:13102/sc62server/ws</HostSM>
+		
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13090/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13091/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13092/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13093/sc62server/ws</HostSM>
+	</ET_ORG>
+	<ET_PERSON>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-010:13100/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-010:13101/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-010:13102/sc62server/ws</HostSM>
+		
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13090/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13091/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13092/sc62server/ws</HostSM>
+		<HostSM ConnectionCount="2">http://tv-sm-12r2-001:13093/sc62server/ws</HostSM>
+	</ET_PERSON>
+	<Servlet>
+		<port>8081</port>
+		<thread>1</thread>
+		<token encodeHex="f">34jk5kljbkjb345i</token>
+	</Servlet>
+</SMSAPHRAdapter>
